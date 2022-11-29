@@ -21,9 +21,6 @@ if ($row['status'] == NULL)
                         <form action="php/login.php" method="post">
                             <h2 class="fw-bold mb-2 text-uppercase ">package pick-up service</h2>
                             <p class=" mb-5">Please await until your request is accepted</p>
-                            <button onclick='window.location.reload(true);'">
-                            Check request
-                            </button>
                         </form>
                     </div>
                 </div>
