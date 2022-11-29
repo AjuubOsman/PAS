@@ -1,0 +1,13 @@
+.double-nav .breadcrumb-dn {
+    color: #fff;
+}
+.button-collapse i {
+    color: #fff
+}
+.top {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+}
