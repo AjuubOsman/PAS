@@ -12,7 +12,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php?page=login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php?page=register">Register</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?page=registerchoose">Register</a>
                 </li>
             </ul>
             <form class="d-flex">

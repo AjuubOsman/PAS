@@ -1,7 +1,7 @@
 <?php
-if (isset($_SESSION['notification'])) {
-    echo '<p style = "color:red;">' . $_SESSION['notification'] . '</p>';
-    unset($_SESSION['notification']);
+if (isset($_SESSION['melding2'])) {
+    echo '<p style = "color:red;">' . $_SESSION['melding2'] . '</p>';
+    unset($_SESSION['melding2']);
 }
 $role = $_GET['role'];
 
@@ -94,7 +94,7 @@ else{?>
                                 <p class=" mb-5">Register</p>
                                 <div class="mb-3">
                                     <label for="email" class="form-label ">Name</label>
-                                    <input type="text" class="form-control"  name="ame" placeholder="Name">
+                                    <input type="text" class="form-control"  name="name" placeholder="Name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label ">Company name</label>
@@ -105,7 +105,18 @@ else{?>
                                     <input type="number" class="form-control" name="capacity" placeholder="Load Capacity">
                                 </div>
 
-                                <div class="d-grid">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label ">Email address</label>
+                                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label ">Password</label>
+                                    <input type="password" class="form-control" name="psw" placeholder="*******">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label ">Repeat password</label>
+                                    <input type="password" class="form-control" name="pswrepeat" placeholder="*******">
+                                </div>
 
                                     <button class="btn btn-outline-dark"
                                             onclick="window.location.href='index.php?page=register'" type="submit">Sign up

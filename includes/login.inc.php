@@ -32,7 +32,7 @@ if (isset($_SESSION['notification'])) {
                         <div class="d-grid">
                             <p>Don't have an account?</p>
                             <button class="btn btn-outline-dark"
-                                    onclick="window.location.href='index.php?page=register'" type="button">Sign up
+                                    onclick="window.location.href='index.php?page=registerchoose'" type="button">Sign up
                             </button>
                         </div>
 
