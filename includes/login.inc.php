@@ -34,6 +34,7 @@ if (isset($_SESSION['notification'])) {
                             <button class="btn btn-outline-dark"
                                     onclick="window.location.href='index.php?page=registerchoose'" type="button">Sign up
                             </button>
+
                         </div>
 
 
