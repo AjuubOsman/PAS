@@ -8,23 +8,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <?php if(isset ($_SESSION['userid']) || ($_SESSION['carrierid']) ){
+                <?php
 
-                    if(isset($_SESSION['role']) && ($_SESSION['role'] == 'worker')){?>
+                    if($_SESSION['role'] == 'worker'){?>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?page=carrieroverview">Carrier overview</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="php/logout.php">Logout</a>
                 </li><?php }?>
-                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'admin')){?>
+                <?php if ($_SESSION['role'] == 'admin'){?>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.php?page=workeroverview">Worker overview (admin)</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php?page=carrieroverview">Carrier overview (admin)</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="php/logout.php">Logout</a>
                     </li><?php }?>
-                <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'customer')){?>
+                <?php if($_SESSION['role'] == 'customer'){?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php?page=registerpackage">Register package</a>
                     </li>
@@ -33,17 +36,18 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="php/logout.php">Logout</a>
-                    </li><?php if(isset($_SESSION['role']) && ($_SESSION['role'] == 'carrier')){?>
+                        <?php }?>
+                    </li><?php if($_SESSION['role'] == 'carrier'){?>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php?page=registerpackage">Register package</a>
+                            <a class="nav-link active" aria-current="page" href="index.php?page=packageoverview">Package Overview</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php?page=mypackages">My packages</a>
+                            <a class="nav-link active" aria-current="page" href="index.php?page=claimedpackages">Claimed Packages</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="php/logout.php">Logout</a>
 
-                    <?php }}}else{?>
+                    <?php }else{?>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?page=login">Login</a>
                 </li>

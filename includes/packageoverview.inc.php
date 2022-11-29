@@ -32,6 +32,34 @@ if ($row['status'] == NULL)
 else{?>
 
 
-    welkom
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th scope="col">Sender</th>
+            <th scope="col">Size</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Receiver</th>
+            <th scope="col">Status</th>
+
+
+        </tr>
+        </thead>
+
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                </tbody>
+
+    </table>
+
 <?php }
 ?>
