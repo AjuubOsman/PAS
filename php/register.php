@@ -55,13 +55,14 @@ if ($role == 'customer') {
         $company = $_POST['company'];
         $capacity = $_POST['capacity'];
 
-        $stmtcarrier = $conn->prepare("insert into carrier (name, company,capacity,email,password)
-                                                       values(:name, :company, :capacity, :email, :password)");
+        $stmtcarrier = $conn->prepare("insert into carrier (name, company,capacity,email,password,role)
+                                                       values(:name, :company, :capacity, :email, :password,:role)");
         $stmtcarrier->bindParam(':name', $name);
         $stmtcarrier->bindParam(':company', $company);
         $stmtcarrier->bindParam(':capacity', $capacity);
         $stmtcarrier->bindParam(':email', $email);
         $stmtcarrier->bindParam(':password', $password);
+        $stmtcarrier->bindParam(':role', $role);
         $stmtcarrier->execute();
 
 

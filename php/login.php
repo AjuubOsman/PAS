@@ -14,7 +14,15 @@ $query->bindParam(':email', $email);
 $query->bindParam(':password', $password);
 $query->execute();
 
-if ($query->rowCount() == 1) {
+
+$sql = "SELECT carrierid, role FROM carrier WHERE email = :email AND password = :password";
+$query1 = $conn->prepare($sql);
+$query1->bindParam(':email', $email);
+$query1->bindParam(':password', $password);
+$query1->execute();
+$result1 = $query1->fetch(PDO::FETCH_ASSOC);
+var_dump($result1);
+if ($query OR $query1->rowCount() == 1) {
     $result = $query->fetch(PDO::FETCH_ASSOC);
     if ($result['role'] == "worker") {
         $_SESSION['role'] = "worker";
@@ -30,14 +38,14 @@ if ($query->rowCount() == 1) {
         $_SESSION['userid'] = $result['userid'];
         header('location: ../index.php?page=registerpackage');
     }
-    elseif ($result['role'] == "carrier") {
+    elseif ($result1['role'] == "carrier") {
         $_SESSION['role'] = "carrier";
-        $_SESSION['userid'] = $result['userid'];
-        header('location: ../index.php?page=registerpackage');
+        $_SESSION['carrierid'] = $result1['carrierid'];
+        header('location: ../index.php?page=packageoverview');
     }
 
 } else {
     $_SESSION['notification'] = 'Combination username and password incorrect.';
-    header('location: ../index.php?page=login'
-    );
+//    header('location: ../index.php?page=login'
+//    );
 }
