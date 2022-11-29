@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
                 <?php
-
+if (isset($_SESSION['role'])){
                     if($_SESSION['role'] == 'worker'){?>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Carrier overview</a>
@@ -45,7 +45,7 @@
                         <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
 
-                    <?php }else{?>
+                    <?php }}else{?>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="index.php?page=login">Login</a>
                 </li>
