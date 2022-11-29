@@ -24,13 +24,20 @@ if ($query->rowCount() == 1) {
         $_SESSION['role'] = "admin";
         $_SESSION['userid'] = $result['userid'];
         header('location: ../index.php?page=homepage');
+
     } elseif ($result['role'] == "customer") {
         $_SESSION['role'] = "customer";
         $_SESSION['userid'] = $result['userid'];
-        header('location: ../index.php?page=homepage');
+        header('location: ../index.php?page=registerpackage');
+    }
+    elseif ($result['role'] == "carrier") {
+        $_SESSION['role'] = "carrier";
+        $_SESSION['userid'] = $result['userid'];
+        header('location: ../index.php?page=registerpackage');
     }
 
 } else {
-    $_SESSION['notification'] = 'Combinatie gebruikersnaam en Wachtwoord onjuist.';
-    header('location: ../index.php?page=login');
+    $_SESSION['notification'] = 'Combination username and password incorrect.';
+    header('location: ../index.php?page=login'
+    );
 }
