@@ -1,31 +1,45 @@
+<?php
+include '../private/conn.php';
+
+$sql = "SELECT *  FROM user where role = 'worker' ";
+$query = $conn->prepare($sql);
+$query->execute();
+
+
+?>
+
 <div class="table-responsive">
     <table class="table table-striped table-hover table-bordered table-light border-secondary">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">naam</th>
-            <th scope="col">email</th>
-            <th scope="col">delete button</th>
+            <button class="btn btn-primary"
+                    onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid='">
+                Add
+            </button>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Delete </th>
+            <th scope="col">Edit </th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>Sit</td>
-            <td>Amet</td>
-            <td>Consectetur</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Adipisicing</td>
-            <td>Elit</td>
-            <td>Sint</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Hic</td>
-            <td>Fugiat</td>
-            <td>Temporibus</td>
+            <?php while($row = $query->fetch(PDO::FETCH_ASSOC)){ ?>
+            <td><?= $row['firstname']?></td>
+            <td><?= $row['email']?></td>
+                <td>
+                <button class="btn btn-danger"
+                        onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid='">
+                    Delete
+                </button>
+                </td>
+                <td>
+                    <button class="btn btn-warning"
+                            onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid='">
+                        Edit
+                    </button>
+                </td>
+            <?php }?>
         </tr>
         </tbody>
 
