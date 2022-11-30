@@ -1,3 +1,14 @@
+<?php
+if (isset($_SESSION['melding2'])) {
+    echo '<p style = "color:red;">' . $_SESSION['melding2'] . '</p>';
+    unset($_SESSION['melding2']);
+}
+$role = $_GET['role'];
+
+if ($role == 'customer'){
+
+
+?>
 <div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -5,7 +16,7 @@
                 <div class="border border-3 border-primary"></div>
                 <div class="card bg-white shadow-lg">
                     <div class="card-body p-5">
-                        <form class="mb-3 mt-md-4">
+                        <form action="php/register.php" method="post">
                             <h2 class="fw-bold mb-2 text-uppercase ">Package Pick-up Service</h2>
                             <p class=" mb-5">Register</p>
                             <div class="mb-3">
@@ -61,10 +72,63 @@
                             </button>
                         </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php }
+else{?>
+
+
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="border border-3 border-primary"></div>
+                    <div class="card bg-white shadow-lg">
+                        <div class="card-body p-5">
+                            <form action="php/register.php" method="post">
+                                <h2 class="fw-bold mb-2 text-uppercase ">Package Pick-up Service</h2>
+                                <p class=" mb-5">Register</p>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label ">Name</label>
+                                    <input type="text" class="form-control"  name="name" placeholder="Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label ">Company name</label>
+                                    <input type="text" class="form-control" name="company"  placeholder="Company name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label ">Load Capacity</label>
+                                    <input type="number" class="form-control" name="capacity" placeholder="Load Capacity">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label ">Email address</label>
+                                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label ">Password</label>
+                                    <input type="password" class="form-control" name="psw" placeholder="*******">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label ">Repeat password</label>
+                                    <input type="password" class="form-control" name="pswrepeat" placeholder="*******">
+                                </div>
+
+                                    <button class="btn btn-outline-dark"
+                                            onclick="window.location.href='index.php?page=register'" type="submit">Sign up
+                                    </button>
+                                </div>
+                                <input type="hidden" name="role" value="<?=$role?>">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php } ?>

@@ -17,10 +17,13 @@ if (isset($_SESSION['role'])){
                 </li><?php }?>
                 <?php if ($_SESSION['role'] == 'admin'){?>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?page=workeroverview">Worker overview (admin)</a>
+                        <a class="nav-link" aria-current="page" href="index.php?page=workeroverview">Worker overview</a>
                     </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.php?page=carrierrequest">Carrier Request</a>
+        </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Carrier overview (admin)</a>
+                        <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Carrier overview</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
@@ -50,7 +53,7 @@ if (isset($_SESSION['role'])){
                     <a class="nav-link" aria-current="page" href="index.php?page=login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=register">Register</a>
+                    <a class="nav-link" aria-current="page" href="index.php?page=registerchoose">Register</a>
                 </li>
                 <?php }?>
         </ul>
