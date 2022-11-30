@@ -1,33 +1,49 @@
-<div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered table-light border-secondary">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">naam</th>
-            <th scope="col">email</th>
-            <th scope="col">delete button</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Sit</td>
-            <td>Amet</td>
-            <td>Consectetur</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Adipisicing</td>
-            <td>Elit</td>
-            <td>Sint</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Hic</td>
-            <td>Fugiat</td>
-            <td>Temporibus</td>
-        </tr>
-        </tbody>
+<?php
+include '../private/conn.php';
 
-    </table>
-</div>
+$sql = "SELECT firstname,lastname, email, userid
+        FROM user
+        WHERE role = 'worker'";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+?>
+<table class="table table-striped table-hover table-bordered table-light border-secondary">
+    <thead>
+    <tr>
+        <button style="float:right" class="btn btn-success" onclick="window.location.href='index.php?page=addworker'">
+            Add Worker
+        </button>
+        <th scope="col">Firstname</th>
+        <th scope="col">lastname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <?php if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+            <tbody>
+            <tr>
+                <td><?= $row["firstname"] ?></td>
+                <td><?= $row["lastname"] ?></td>
+                <td><?= $row["email"] ?></td>
+                <td>
+                    <button class="btn btn-primary"
+                            onclick="window.location.href='index.php?page=editworker&userid=<?= $row["userid"] ?>'">Edit
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger"
+                            onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid=<?= $row["userid"] ?>'">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        <?php }
+    } ?>
+</table>
+
+
+
+
