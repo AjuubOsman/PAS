@@ -62,7 +62,9 @@ elseif ($row['status'] == 'approve'){?>
     </table>
 
 <?php }
-elseif ($row['status'] == 'disapprove'){?>
+elseif ($row['status'] == 'disapprove'){
+
+    ?>
 
     <div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="container">
@@ -81,5 +83,10 @@ elseif ($row['status'] == 'disapprove'){?>
         </div>
     </div>
 </div>
-<?php }
+<?php  }
+
+
+
+
+
 ?>
