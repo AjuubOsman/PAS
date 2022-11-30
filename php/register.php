@@ -54,7 +54,7 @@ if ($role == 'customer') {
         $name = $_POST['name'];
         $company = $_POST['company'];
         $capacity = $_POST['capacity'];
-        $status = 'Pending';
+        $status = 'pending';
 
         $stmtcarrier = $conn->prepare("insert into carrier (name, company,capacity,email,password,status,role)
                                                        values(:name, :company, :capacity, :email, :password,:status,:role)");

@@ -6,7 +6,7 @@ $carrierid = $_POST['carrierid'];
 $status = $_POST['action'];
 
 
-if ($status == 'Approve') {
+if ($status == 'approve') {
 
     $stmt = $conn->prepare("UPDATE carrier SET status =  :status  where carrierid = :carrierid");
     $stmt ->bindParam(':status' , $status);

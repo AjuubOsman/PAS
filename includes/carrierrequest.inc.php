@@ -32,8 +32,8 @@ $query->execute();
         <td><?= $row['capacity']?></td>
 
 
-            <td> <input type="submit" class="btn btn-primary"  name="action" value="Approve" />
-           <input type="submit" class="btn btn-danger" name="action" value="Disapprove" /></td>
+            <td> <input type="submit" class="btn btn-primary"  name="action" value="approve" />
+           <input type="submit" class="btn btn-danger" name="action" value="disapprove" /> </td>
             <input type="hidden" name="carrierid" value="<?= $row['carrierid']?>">
         <td></td>
 <?php } ?>
