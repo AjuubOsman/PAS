@@ -1,7 +1,7 @@
 <body >
 <head>
     <meta charset="UTF-8">
-    <title>PAS</title>
+    <title>PAS hallo allemaal</title>
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
