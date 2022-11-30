@@ -1,3 +1,25 @@
+<?php
+include '../private/conn.php';
+if (isset($_SESSION['carrierid'])) {
+    $carrierid = $_SESSION['carrierid'];
+
+    $sql = "SELECT status  FROM carrier where carrierid = :carrierid ";
+    $query = $conn->prepare($sql);
+    $query->bindParam(':carrierid', $carrierid);
+    $query->execute();
+
+
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+
+
+}
+?>
+
+
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark indigo">
     <a class="navbar-brand" href="index.php?page=homepage">PAS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -27,8 +49,8 @@ if (isset($_SESSION['role'])){
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
-                    </li><?php }?>
-                <?php if($_SESSION['role'] == 'customer'){?>
+                    </li>
+                <?php } elseif ($_SESSION['role'] == 'customer'){?>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="index.php?page=registerpackage">Register package</a>
                     </li>
@@ -37,14 +59,16 @@ if (isset($_SESSION['role'])){
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
-                        <?php }?>
-                    </li><?php if($_SESSION['role'] == 'carrier'){?>
+
+                    </li><?php } elseif($_SESSION['role'] == 'carrier'){
+                        if ($row['status'] == 'approve') {?>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="index.php?page=packageoverview">Package Overview</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="index.php?page=claimedpackages">Claimed Packages</a>
                         </li>
+<?php }?>
                         <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
 
