@@ -68,7 +68,7 @@ if ($role == 'customer') {
         $stmtcarrier->execute();
 
 
-        $_SESSION['userid'] = $conn->lastInsertId();
+        $_SESSION['carrierid'] = $conn->lastInsertId();
 
         header('location: ../index.php?page=packageoverview');
         } else {

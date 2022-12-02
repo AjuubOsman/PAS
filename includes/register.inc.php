@@ -122,7 +122,7 @@ else{?>
                                             onclick="window.location.href='index.php?page=register'" type="submit">Sign up
                                     </button>
                                 </div>
-                                <input type="hidden" name="role" value="<?=$role?>">
+                                <input type="hidden" name="role" value="<?= $role ?>">
                             </form>
                         </div>
                     </div>
