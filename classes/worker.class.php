@@ -24,6 +24,11 @@ class worker
 
     }
 
+
+
+
+
+
     function addWorker($conn) {
         $stmt = $conn->prepare("INSERT INTO user (firstname,lastname, email,password,role)
                         VALUES(:firstname, :lastname, :email,:password,:role)");
@@ -53,6 +58,23 @@ class worker
             header('location: ../index.php?page=addworker ');
 
         }
+    }
+
+    function workerOverview ($conn) {
+
+        $sql = "SELECT firstname,lastname, email, userid
+        FROM user
+        WHERE role = 'worker'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->setFetchMode(PDO::FETCH_CLASS, 'worker')){
+
+                return $row;
+            }
+        }
+
     }
 
 

@@ -6,6 +6,18 @@ $sql = "SELECT firstname,lastname, email, userid
         WHERE role = 'worker'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
+
+$userid = null;
+$firstname = null;
+$lastname = null;
+$email = null;
+$password = null;
+$role = null;
+
+
+$workerOverview = new worker($firstname,$lastname,$email,$password,$role,$userid);
+$workerOverview->workerOverview($conn);
+
 ?>
 <table class="table table-striped table-hover table-bordered table-light border-secondary">
     <thead>
@@ -20,7 +32,7 @@ $stmt->execute();
         <th scope="col">Delete</th>
     </tr>
     </thead>
-    <?php if ($stmt->rowCount() > 0) {
+    <?php if ($workerOverview->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
             <tbody>
             <tr>

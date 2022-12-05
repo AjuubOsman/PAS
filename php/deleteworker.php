@@ -4,10 +4,14 @@ require_once('../classes/worker.class.php');
 
 
 $userid = $_GET['userid'];
+$firstname = null;
+$lastname = null;
+$email = null;
+$password = null;
+$role = null;
 
-//$deleteWorker = new worker();
-//$deleteWorker->deleteWorker($conn,$userid);
 
-worker::deleteWorker($conn,$userid);
+$addWorker = new worker($firstname,$lastname,$email,$password,$role,$userid);
+$addWorker->deleteWorker($conn,$userid);
 
 header('location: ../index.php?page=workeroverview');

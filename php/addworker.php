@@ -8,8 +8,9 @@ $lastname = $_POST['lastname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $role = 'worker';
+$userid = null;
 
-$addWorker = new worker($firstname,$lastname,$email,$password,$role);
+$addWorker = new worker($firstname,$lastname,$email,$password,$role,$userid);
 $addWorker->checkEmail($conn);
 
 ?>
