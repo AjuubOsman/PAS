@@ -9,7 +9,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $role = 'worker';
 
-$addWorker = new worker();
-$addWorker->checkEmail($conn,$firstname,$lastname,$email,$password,$role);
+$addWorker = new worker($firstname,$lastname,$email,$password,$role);
+$addWorker->checkEmail($conn);
 
 ?>
