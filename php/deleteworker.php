@@ -1,9 +1,11 @@
 <?php
 include '../../private/conn.php';
+require_once('../classes/worker.class.php');
+
 
 $userid = $_GET['userid'];
 
-$stmt = $conn->prepare("DELETE FROM user WHERE userid = :userid");
-$stmt->bindParam(':userid', $userid);
-$stmt->execute();
+$deleteWorker = new worker();
+$deleteWorker->deleteWorker($conn,$userid);
+
 header('location: ../index.php?page=workeroverview');
