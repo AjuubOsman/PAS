@@ -34,7 +34,7 @@ $stmt->execute();
                 </td>
                 <td>
                     <button class="btn btn-danger"
-                            onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid=<?= $row["userid"] ?>'">
+                            onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid=<?= $row["userid"],$row["userid"] ?>'">
                         Delete
                     </button>
                 </td>
