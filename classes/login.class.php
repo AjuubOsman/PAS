@@ -6,7 +6,7 @@ class loginaccount
         $email,
         $password;
 
-
+()
     public function __construct($email, $password)
     {
         $this->email = $email;
