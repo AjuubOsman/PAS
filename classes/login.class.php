@@ -20,9 +20,7 @@ class loginaccount
         $query->bindParam(':email', $email);
         $query->bindParam(':password', $password);
         $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['userid'] = $result['userid'];
-
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
 
@@ -33,25 +31,23 @@ class loginaccount
         $query1->execute();
         $result1 = $query1->fetch(PDO::FETCH_ASSOC);
 
-        $_SESSION['carrierid'] = $result1['carrierid'];
 
-        if ($result['role'] == 'customer'){
+        if ($result['role'] == 'customer') {
             $_SESSION['role'] = 'customer';
-
+            $_SESSION['userid'] = $result['userid'];
             header('location: ../index.php?page=homepage ');
-        }
-        elseif ($result['role'] == 'carrier'){
+        } elseif ($result1['role'] == 'carrier') {
             $_SESSION['role'] = 'carrier';
-
-            header('location: ../index.php?page=packageoveriew ');
-        }elseif($result['role'] == 'worker'){
+            $_SESSION['carrierid'] = $result1['carrierid'];
+            header('location: ../index.php?page=packageoverview ');
+        } elseif ($result['role'] == 'worker') {
             $_SESSION['role'] = 'worker';
-
+            $_SESSION['userid'] = $result['userid'];
             header('location: ../index.php?page=carrieroverview ');
 
-        } elseif($result['role'] == 'admin'){
+        } elseif ($result['role'] == 'admin') {
             $_SESSION['role'] = 'admin';
-
+            $_SESSION['userid'] = $result['userid'];
             header('location: ../index.php?page=workeroverview ');
 
         }
