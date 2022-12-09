@@ -1,23 +1,7 @@
 <?php
 include '../private/conn.php';
 
-$sql = "SELECT firstname,lastname, email, userid
-        FROM user
-        WHERE role = 'worker'";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-
-$userid = null;
-$firstname = null;
-$lastname = null;
-$email = null;
-$password = null;
-$role = null;
-
-
-$workerOverview = new worker($firstname,$lastname,$email,$password,$role,$userid);
-$workerOverview->workerOverview($conn);
-
+$worker = new worker();
 ?>
 <table class="table table-striped table-hover table-bordered table-light border-secondary">
     <thead>
@@ -32,28 +16,30 @@ $workerOverview->workerOverview($conn);
         <th scope="col">Delete</th>
     </tr>
     </thead>
-    <?php if ($workerOverview->rowCount() > 0) {
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-            <tbody>
-            <tr>
-                <td><?= $row["firstname"] ?></td>
-                <td><?= $row["lastname"] ?></td>
-                <td><?= $row["email"] ?></td>
-                <td>
-                    <button class="btn btn-primary"
-                            onclick="window.location.href='index.php?page=editworker&userid=<?= $row["userid"] ?>'">Edit
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger"
-                            onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid=<?= $row["userid"],$row["userid"] ?>'">
-                        Delete
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        <?php }
-    } ?>
+
+    <?php
+    if ($worker->workeroverview($conn) != NULL){
+    foreach($worker->workeroverview($conn) as $value){?>
+    <tbody>
+    <tr>
+        <td><?= $value->firstname?></td>
+        <td><?= $value->lastname?></td>
+        <td><?= $value->email?></td>
+        <td>
+            <button class="btn btn-primary"
+                    onclick="window.location.href='index.php?page=editworker&userid=<?= $value->userid?>'">Edit
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-danger"
+                    onclick=" if(confirm('Are you sure you want to delete this worker?'))window.location.href='php/deleteworker.php?userid=<?=$value->userid ?>'">
+                Delete
+            </button>
+        </td>
+        <?php }} ?>
+    </tr>
+    </tbody>
+
 </table>
 
 

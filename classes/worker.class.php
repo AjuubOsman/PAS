@@ -8,11 +8,10 @@ class worker
         $lastname,
         $email,
         $password,
-        $role,
-        $userid;
+        $role;
 
 
-    public function __construct($firstname, $lastname, $email,$password,$role,$userid)
+    public function __construct($firstname, $lastname, $email,$password,$role)
     {
 
         $this->firstname = $firstname;
@@ -20,7 +19,7 @@ class worker
         $this->email = $email;
         $this->password = $password;
         $this->role = $role;
-        $this->userid = $userid;
+
 
     }
 
@@ -60,7 +59,7 @@ class worker
         }
     }
 
-    function workerOverview ($conn) {
+    function workeroverview ($conn) {
 
         $sql = "SELECT firstname,lastname, email, userid
         FROM user

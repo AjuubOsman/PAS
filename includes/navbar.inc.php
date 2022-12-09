@@ -68,17 +68,19 @@ if (isset($_SESSION['role'])){
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="index.php?page=claimedpackages">Claimed Packages</a>
                         </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
+                            <li class="nav-item">
 
 
+                    <?php }elseif($row['status'] == 'pending' ||$row['status'] == 'disapprove' ){
 
-                    <?php }else{
-                            // fixen dat als je status pending is, alleen logout kunnen zien.
                             ?>
                         <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
-
+                            <li class="nav-item">
                     <?php }}}else{?>
-                <li class="nav-item">
+
                     <a class="nav-link" aria-current="page" href="index.php?page=login">Login</a>
                 </li>
                 <li class="nav-item">
