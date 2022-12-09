@@ -106,6 +106,8 @@ class worker
         $stmt = $conn->prepare("DELETE FROM user WHERE userid = :userid");
         $stmt->bindParam(':userid', $this->userid);
         $stmt->execute();
+        header('location: ../index.php?page=workeroverview');
+
     }
 
 

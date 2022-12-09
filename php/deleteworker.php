@@ -8,7 +8,6 @@ $addWorker = new worker();
 $addWorker->setUserid($userid);
 $addWorker->deleteWorker($conn);
 
-header('location: ../index.php?page=workeroverview');
 
 
 
