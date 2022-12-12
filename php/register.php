@@ -27,7 +27,7 @@ if ($password == $passwordrepeat) {
         $housenumber = $_POST['housenumber'];
         $phonenumber = $_POST['phonenumber'];
         $role = 'customer';
-        $register = new user($conn, $firstname, $middlename, $lastname, $dob, $postalcode, $city, $housenumber, $phonenumber, $email, $password, $role);
+        $register = new user();
         $register->registercustomer($conn, $firstname, $middlename, $lastname, $dob, $postalcode, $city, $housenumber, $phonenumber, $email, $password, $role);
     } else {
         $email = $_POST['email'];
@@ -37,7 +37,7 @@ if ($password == $passwordrepeat) {
         $company = $_POST['company'];
         $role = 'carrier';
         $status = 'pending';
-        $registercarrier = new user($conn, $name, $company, $capacity, $email, $password, $role, $status);
+        $registercarrier = new user();
         $registercarrier->registercarrier($conn, $name, $company, $capacity, $email, $password, $role, $status);
     }
 }else{

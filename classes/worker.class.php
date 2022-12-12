@@ -47,7 +47,7 @@ class worker
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'worker');
         if ($stmt->rowCount() == 0) {
 
-            $this->addWorker();
+            $this->addWorker($conn);
             header('location: ../index.php?page=workeroverview ');
 
         } else {
@@ -57,7 +57,7 @@ class worker
         }
     }
 
-    function addWorker()
+    function addWorker($conn)
     {
         $stmt = $conn->prepare("INSERT INTO user (firstname,lastname, email,password,role)
                         VALUES(:firstname, :lastname, :email,:password,:role)");
@@ -100,12 +100,6 @@ class worker
         $stmt->bindParam(':userid', $userid);
         $stmt->execute();
         header('location: ../index.php?page=workeroverview');
-    }
-
-
-    function set_id($conn)
-    {
-
     }
 
     function deleteWorker($conn)

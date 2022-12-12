@@ -32,7 +32,7 @@ class user
         $query1->setFetchMode(PDO::FETCH_CLASS, 'user');
 
 
-        if ($query->rowCount() == 0 AND $query->rowCount() == 0) {
+        if ($query->rowCount() == 0 AND $query1->rowCount() == 0) {
 
 
             $stmt = $conn->prepare("INSERT INTO user (firstname,middlename,lastname,dob,postalcode,city,housenumber,phonenumber,email,password,role)
@@ -76,7 +76,7 @@ class user
         $query1->execute();
         $query1->setFetchMode(PDO::FETCH_CLASS, 'user');
 
-        if ($query->rowCount() == 0 AND $query->rowCount() == 0) {
+        if ($query->rowCount() == 0 AND $query1->rowCount() == 0) {
 
 
             $stmt = $conn->prepare("INSERT INTO carrier (name,company,capacity,email,password,role,status)

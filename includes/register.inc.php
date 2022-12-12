@@ -8,128 +8,143 @@ $role = $_GET['role'];
 if ($role == 'customer'){
 
 
-?>
-<div class="vh-100 d-flex justify-content-center align-items-center">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6">
-                <div class="border border-3 border-primary"></div>
-                <div class="card bg-white shadow-lg">
-                    <div class="card-body p-5">
-                        <form action="php/register.php" method="post">
-                            <h2 class="fw-bold mb-2 text-uppercase ">Package Pick-up Service</h2>
-                            <p class=" mb-5">Register</p>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">First name</label>
-                                <input type="text" class="form-control"  name="firstname" placeholder="Firstname">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">Middle name</label>
-                                <input type="text" class="form-control" name="middlename"  placeholder="Middle name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">Last name</label>
-                                <input type="text" class="form-control" name="lastname" placeholder="Last name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">Date of birth</label>
-                                <input type="date" class="form-control" name="dob" placeholder="name@example.com">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">Postal code</label>
-                                <input type="text" class="form-control" name="postalcode" placeholder="Postal code">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">City</label>
-                                <input type="text" class="form-control" name="city" placeholder="City">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">Housenumber</label>
-                                <input type="text" class="form-control" name="housenumber" placeholder="Housenumber">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">Phone number</label>
-                                <input type="text" class="form-control" name="phonenumber" placeholder="Phone number">
-                            </div>
+    ?>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                    <form action="php/register.php" method="post">
 
-                            <div class="mb-3">
-                                <label for="email" class="form-label ">Email address</label>
-                                <input type="email" class="form-control" name="email" placeholder="name@example.com">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label ">Password</label>
-                                <input type="password" class="form-control" name="psw" placeholder="*******">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label ">Repeat password</label>
-                                <input type="password" class="form-control" name="pswrepeat" placeholder="*******">
-                            </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">First name</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="First name" name="firstname" />
 
-                        <div class="d-grid">
+                        </div>
 
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Last name</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="Middle name" name="middlename" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">First name</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="Last name" name="lastname" />
+
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Date of birth</label>
+                            <input type="date" class="form-control form-control-lg" name="dob" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Postal code</label>
+                            <input type="text" class="form-control form-control-lg" name="postalcode" placeholder="Postal code" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-control form-control-lg" name="city" placeholder="City" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Housenumber</label>
+                            <input type="text" class="form-control form-control-lg" name="housenumber" placeholder="Housenumber" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Phonenumber</label>
+                            <input type="text" class="form-control form-control-lg" name="phonenumber" placeholder="Phonenumber" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control form-control-lg" name="email" placeholder="name@example.com"/>
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control form-control-lg" name="psw" placeholder="*******" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Repeat password</label>
+                            <input type="password" class="form-control form-control-lg" name="pswrepeat" placeholder="*******" />
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-center">
                             <button class="btn btn-outline-dark"
                                     onclick="window.location.href='index.php?page=register'" type="submit">Sign up
                             </button>
                         </div>
-                            <input type="hidden" name="role" value="<?= $role ?>">
-                        </form>
-                    </div>
+                        <input type="hidden" name="role" value="<?= $role ?>">
+
+
+
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-</div>
-<?php }
-else{?>
+<?php }else{ ?>
 
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                    <form action="php/register.php" method="post">
 
-    <div class="vh-100 d-flex justify-content-center align-items-center">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <div class="border border-3 border-primary"></div>
-                    <div class="card bg-white shadow-lg">
-                        <div class="card-body p-5">
-                            <form action="php/register.php" method="post">
-                                <h2 class="fw-bold mb-2 text-uppercase ">Package Pick-up Service</h2>
-                                <p class=" mb-5">Register</p>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label ">Name</label>
-                                    <input type="text" class="form-control"  name="name" placeholder="Name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label ">Company name</label>
-                                    <input type="text" class="form-control" name="company"  placeholder="Company name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label ">Load Capacity</label>
-                                    <input type="number" class="form-control" name="capacity" placeholder="Load Capacity">
-                                </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Full name</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="Full name" name="name" />
 
-                                <div class="mb-3">
-                                    <label for="email" class="form-label ">Email address</label>
-                                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label ">Password</label>
-                                    <input type="password" class="form-control" name="psw" placeholder="*******">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label ">Repeat password</label>
-                                    <input type="password" class="form-control" name="pswrepeat" placeholder="*******">
-                                </div>
-
-                                    <button class="btn btn-outline-dark"
-                                            onclick="window.location.href='index.php?page=register'" type="submit">Sign up
-                                    </button>
-                                </div>
-                                <input type="hidden" name="role" value="<?= $role ?>">
-                            </form>
                         </div>
-                    </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Company</label>
+                            <input type="text" class="form-control" name="company"  placeholder="Company name" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Load capacity</label>
+                            <input type="number" class="form-control" name="capacity" placeholder="Load Capacity" />
+
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="name@example.com" />
+
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" name="psw" placeholder="*******" />
+                        </div>
+                        <div class="form-outline mb-4">
+                            <label class="form-label">Repeat password</label>
+                            <input type="password" class="form-control" name="pswrepeat" placeholder="*******" />
+                        </div>
+
+
+
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-outline-dark"
+                                    onclick="window.location.href='index.php?page=register'" type="submit">Sign up
+                            </button>
+                        </div>
+
+                        <input type="hidden" name="role" value="<?= $role ?>">
+
+
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-
 <?php } ?>
