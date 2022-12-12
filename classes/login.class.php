@@ -20,7 +20,7 @@ class loginaccount
         $query->bindParam(':email', $email);
         $query->bindParam(':password', $password);
         $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
 
 
 

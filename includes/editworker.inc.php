@@ -9,13 +9,6 @@ $stmt->bindParam(':userid', $userid);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-echo $userid; ?> <br><?php
-
-$test = new worker();
-foreach ($test->setUserid($conn, $userid) as $value) {
-    echo $value->firstname;
-
-}
 
 
 ?>

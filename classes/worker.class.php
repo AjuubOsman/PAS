@@ -33,6 +33,13 @@ class worker
 
     function checkEmail($conn, $firstname, $lastname, $email, $password, $role)
     {
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
+        $this->password = $password;
+        $this->role = $role;
+
+
         $sql = 'SELECT userid, email FROM user where email = :email ';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $this->email);
@@ -40,7 +47,7 @@ class worker
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'worker');
         if ($stmt->rowCount() == 0) {
 
-            $this->addWorker($conn, $firstname, $lastname, $email, $password, $role);
+            $this->addWorker();
             header('location: ../index.php?page=workeroverview ');
 
         } else {
@@ -50,15 +57,15 @@ class worker
         }
     }
 
-    function addWorker($conn, $firstname, $lastname, $email, $password, $role)
+    function addWorker()
     {
         $stmt = $conn->prepare("INSERT INTO user (firstname,lastname, email,password,role)
                         VALUES(:firstname, :lastname, :email,:password,:role)");
-        $stmt->bindParam(':firstname', $firstname);
-        $stmt->bindParam(':lastname', $lastname);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':role', $role);
+        $stmt->bindParam(':firstname', $this->firstname);
+        $stmt->bindParam(':lastname', $this->lastname);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':password', $this->password);
+        $stmt->bindParam(':role', $this->role);
         $stmt->execute();
     }
 
