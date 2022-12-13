@@ -7,13 +7,13 @@
                 <div class="card bg-white shadow-lg">
                     <div class="card-body p-5">
                         <form action="php/login.php" method="post">
-                            <h2 class="fw-bold mb-2 text-uppercase ">package pick-up service</h2>
+                            <h2 class="fw-bold mb-2 text-uppercase ">Pakket Ophaal Service</h2>
                             <p class=" mb-5">Specify your Role</p>
                             <div class="mb-3">
                                 <div class="d-grid">
                                     <label>Sign in as Customer</label>
                                     <button class="btn btn-outline-dark"
-                                            onclick="window.location.href='index.php?page=register&role=customer'"  type="button">Sign up
+                                            onclick="window.location.href='index.php?page=register&role=customer'"  type="button">Registreer
                                     </button>
                                 </div>
                             </div>
@@ -23,9 +23,9 @@
 
 
                         <div class="d-grid">
-                            <label>Sign in as Carrier</label>
+                            <label>Registreer als als Koerier</label>
                             <button class="btn btn-outline-dark"
-                                    onclick="window.location.href='index.php?page=register&role=carrier'" type="button">Sign up
+                                    onclick="window.location.href='index.php?page=register&role=carrier'" type="button">Registreer
                             </button>
                         </div>
 

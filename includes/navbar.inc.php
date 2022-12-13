@@ -32,44 +32,44 @@ if (isset($_SESSION['carrierid'])) {
 if (isset($_SESSION['role'])){
                     if($_SESSION['role'] == 'worker'){?>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Carrier overview</a>
+                    <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Koerier overzicht</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
+                    <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
                 </li><?php }?>
                 <?php if ($_SESSION['role'] == 'admin'){?>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?page=workeroverview">Worker overview</a>
+                        <a class="nav-link" aria-current="page" href="index.php?page=workeroverview">Medewerker overzicht</a>
                     </li>
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index.php?page=carrierrequest">Carrier Request</a>
+            <a class="nav-link" aria-current="page" href="index.php?page=carrierrequest">Koerier Aanvragen</a>
         </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Carrier overview</a>
+                        <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Koerier overzicht</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
+                        <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
                     </li>
                 <?php } elseif ($_SESSION['role'] == 'customer'){?>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?page=registerpackage">Register package</a>
+                        <a class="nav-link" aria-current="page" href="index.php?page=registerpackage">Registreer Pakket</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php?page=mypackages">My packages</a>
+                        <a class="nav-link" aria-current="page" href="index.php?page=mypackages">Mijn pakketten</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
+                        <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
 
                     </li><?php } elseif($_SESSION['role'] == 'carrier'){
                         if ($row['status'] == 'approve') {?>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.php?page=packageoverview">Package Overview</a>
+                            <a class="nav-link" aria-current="page" href="index.php?page=packageoverview">Pakket overzicht</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.php?page=claimedpackages">Claimed Packages</a>
+                            <a class="nav-link" aria-current="page" href="index.php?page=claimedpackages">Claimed Pakketten</a>
                         </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
+                                <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
                             <li class="nav-item">
 
 
@@ -77,11 +77,11 @@ if (isset($_SESSION['role'])){
 
                             ?>
                         <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="php/logout.php">Logout</a>
+                        <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
                             <li class="nav-item">
                     <?php }}}else{?>
 
-                    <a class="nav-link" aria-current="page" href="index.php?page=login">Login</a>
+                    <a class="nav-link" aria-current="page" href="index.php?page=login">Log In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="index.php?page=registerchoose">Register</a>
