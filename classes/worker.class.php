@@ -51,7 +51,7 @@ class worker
             header('location: ../index.php?page=workeroverview ');
 
         } else {
-            $_SESSION['notification'] = 'This email is not available.';
+            $_SESSION['notification'] = 'Deze email is niet beschkikbaar.';
             header('location: ../index.php?page=addworker ');
 
         }

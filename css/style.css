@@ -13,9 +13,34 @@
 }
 .navbar{
 
-    background-color: darkcyan !important;
+    background-color: #aab001;
     padding: 10px;
 }
+.leftcolumn {
+    float: left;
+    width: 75%;
+}
+.rightcolumn {
+    float: left;
+    width: 25%;
+    background-color: #f1f1f1;
+    padding-left: 5px;
+}
+.fakeimg {
 
+    height:200px;
+    width: 100%;
+    padding: 20px;
+}
+.card {
+    background-color: white;
+    padding: 5px;
+    margin-top: 5px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 

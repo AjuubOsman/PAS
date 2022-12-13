@@ -8,7 +8,7 @@ $role = $_GET['role'];
 if ($role == 'customer'){
 
 
-    ?>
+        ?>
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
             <div class="card" style="border-radius: 15px;">
@@ -23,12 +23,12 @@ if ($role == 'customer'){
                         </div>
 
                         <div class="form-outline mb-4">
-                            <label class="form-label">Last name</label>
+                            <label class="form-label">Middle name</label>
                             <input type="text" class="form-control form-control-lg" placeholder="Middle name" name="middlename" />
 
                         </div>
                         <div class="form-outline mb-4">
-                            <label class="form-label">First name</label>
+                            <label class="form-label">Last name</label>
                             <input type="text" class="form-control form-control-lg" placeholder="Last name" name="lastname" />
 
                         </div>

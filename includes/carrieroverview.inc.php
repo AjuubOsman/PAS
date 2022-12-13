@@ -8,9 +8,9 @@ $query->execute();
     <thead>
     <tr>
 
-        <th scope="col">Firstname</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Package Capacity</th>
+        <th scope="col">Naam</th>
+        <th scope="col">Bedrijfsnaam</th>
+        <th scope="col">Ladings capaciteit</th>
 
 
 

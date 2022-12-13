@@ -53,7 +53,7 @@ class loginaccount
             }
         } else {
 
-            $_SESSION['notification'] = 'Email or password incorrect, please try again.';
+            $_SESSION['notification'] = 'Email of wachtwoord incorrect, probeer het nogmaals.';
             header('location: ../index.php?page=login ');
         }
     }}

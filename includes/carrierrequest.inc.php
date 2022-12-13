@@ -18,25 +18,30 @@ $stmt->execute();
     <thead>
     <tr>
 
-        <th scope="col">Name</th>
-        <th scope="col">Company</th>
-        <th scope="col">Capacity</th>
+        <th scope="col">Naam</th>
+        <th scope="col">Bedrijf</th>
+        <th scope="col">Capaciteit</th>
+        <th scope="col">Goedkeuren</th>
+        <th scope="col">Afkeuren</th>
+
+
 
     </tr>
     </thead>
 
     <tbody>
-    <tr>
+
 
         <?php while ($row = $query->fetch(PDO::FETCH_ASSOC)){ ?>
         <form method="post" action="php/carrierrequest.php">
+            <tr>
             <td> <?= $row['name'] ?></td>
             <td><?= $row['company'] ?></td>
             <td><?= $row['capacity'] ?></td>
 
 
-            <td><input type="submit" class="btn btn-primary" name="action" value="approve"/>
-                <input type="submit" class="btn btn-danger" name="action" value="disapprove"/></td>
+            <td><input type="submit" class="btn btn-primary" name="action" value="approve"/></td>
+               <td> <input type="submit" class="btn btn-danger" name="action" value="disapprove"/></td>
             <input type="hidden" name="carrierid" value="<?= $row['carrierid'] ?>">
             <td></td>
             <?php } ?>

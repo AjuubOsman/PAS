@@ -3,7 +3,7 @@ include '../private/conn.php';
 $carrierid = $_SESSION['carrierid'];
 
 
-$sql = "SELECT status FROM carrier WHERE carrierid = :carrierid ";
+$sql = "SELECT status,cd FROM carrier WHERE carrierid = :carrierid ";
 $query = $conn->prepare($sql);
 $query->bindParam(':carrierid', $carrierid);
 $query->execute();
@@ -19,7 +19,7 @@ if ($row['status'] == 'pending')
                 <div class="card bg-white shadow-lg">
                     <div class="card-body p-5">
                         <form action="php/login.php" method="post">
-                            <h2 class="fw-bold mb-2 text-uppercase ">package pick-up service</h2>
+                            <h2 class="fw-bold mb-2 text-uppercase ">Package pick-up service</h2>
                             <p class=" mb-5">Please await until your request is accepted</p>
                         </form>
                     </div>
@@ -64,6 +64,8 @@ elseif ($row['status'] == 'approve'){?>
 <?php }
 elseif ($row['status'] == 'disapprove'){
 
+
+
     ?>
 
     <div class="vh-100 d-flex justify-content-center align-items-center">
@@ -75,7 +77,7 @@ elseif ($row['status'] == 'disapprove'){
                     <div class="card-body p-5">
                         <form action="php/login.php" method="post">
                             <h2 class="fw-bold mb-2 text-uppercase ">package pick-up service</h2>
-                            <p class=" mb-5">You have been denied access try again in 2 months</p>
+                            <p class=" mb-5">You have been denied access, on <?= $row['cd'] ?> can you register again.</p>
                         </form>
                     </div>
                 </div>

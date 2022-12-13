@@ -54,7 +54,7 @@ class user
             header('location: ../index.php?page=homepage ');
         }
         else{
-            $_SESSION['notification'] = 'This email is not available.';
+            $_SESSION['notification'] = 'Deze email is niet beschikbaar.';
             header('location: ../index.php?page=register&role='. $role);
 
         }
@@ -95,53 +95,10 @@ class user
 
 
         }else{
-            $_SESSION['notification'] = 'This email is not available.';
+            $_SESSION['notification'] = 'Deze email is niet beschikbaar.';
             header('location: ../index.php?page=register&role='. $role);
 
         }
-
-    }
-
-
-
-    function login($conn, $email, $password)
-    {
-
-        $sql = "SELECT role, userid FROM user WHERE email = :email AND password = :password";
-        $query = $conn->prepare($sql);
-        $query->bindParam(':email', $email);
-        $query->bindParam(':password', $password);
-        $query->execute();
-        $query->setFetchMode(PDO::FETCH_CLASS, 'user');
-
-
-
-
-
-        $sql = "SELECT carrierid, role FROM carrier WHERE email = :email AND password = :password";
-        $query1 = $conn->prepare($sql);
-        $query1->bindParam(':email', $email);
-        $query1->bindParam(':password', $password);
-        $query1->setFetchMode(PDO::FETCH_CLASS, 'user');
-        $query1->execute();
-
-
-        if ($query['role'] == 'customer'){
-
-            header('location: ../index.php?page=homepage ');
-        }
-        elseif ($query1['role'] == 'carrier'){
-            header('location: ../index.php?page=packageoveriew ');
-        }elseif($query['role'] == 'worker'){
-
-            header('location: ../index.php?page=carrieroverview ');
-
-        } elseif($query['role'] == 'admin'){
-
-            header('location: ../index.php?page=workeroverview ');
-
-        }
-
 
     }
 }
