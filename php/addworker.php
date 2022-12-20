@@ -11,6 +11,6 @@ $role = 'worker';
 
 
 $addWorker = new worker();
-$addWorker->checkEmail($conn,$firstname,$lastname,$email,$password,$role);
+$addWorker->addWorker($conn,$firstname,$lastname,$email,$password,$role);
 
 ?>

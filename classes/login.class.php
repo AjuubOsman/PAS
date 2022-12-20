@@ -4,15 +4,7 @@ class loginaccount
 {
 
     public
-        $email,
-        $password;
 
-
-//    public function __construct($email, $password)
-//    {
-//        $this->email = $email;
-//        $this->password = $password;
-//    }
 
     function login($conn, $email, $password)
     {

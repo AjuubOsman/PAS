@@ -11,19 +11,6 @@ class worker
         $role,
         $userid;
 
-//
-//    public function __construct($firstname, $lastname, $email,$password,$role,$userid)
-//    {
-//
-//        $this->firstname = $firstname;
-//        $this->lastname = $lastname;
-//        $this->email = $email;
-//        $this->password = $password;
-//        $this->role = $role;
-//        $this->userid = $userid;
-//
-//    }
-//
 
 
     public function setUserid($userid)
@@ -31,8 +18,9 @@ class worker
         $this->userid = $userid;
     }
 
-    function checkEmail($conn, $firstname, $lastname, $email, $password, $role)
+    function addWorker($conn, $firstname, $lastname, $email, $password, $role)
     {
+
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
@@ -47,8 +35,14 @@ class worker
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'worker');
         if ($stmt->rowCount() == 0) {
 
-            $this->addWorker($conn);
-            header('location: ../index.php?page=workeroverview ');
+            $stmt = $conn->prepare("INSERT INTO user (firstname,lastname, email,password,role)
+                        VALUES(:firstname, :lastname, :email,:password,:role)");
+            $stmt->bindParam(':firstname', $this->firstname);
+            $stmt->bindParam(':lastname', $this->lastname);
+            $stmt->bindParam(':email', $this->email);
+            $stmt->bindParam(':password', $this->password);
+            $stmt->bindParam(':role', $this->role);
+            $stmt->execute();            header('location: ../index.php?page=workeroverview ');
 
         } else {
             $_SESSION['notification'] = 'Deze email is niet beschkikbaar.';
@@ -57,17 +51,7 @@ class worker
         }
     }
 
-    function addWorker($conn)
-    {
-        $stmt = $conn->prepare("INSERT INTO user (firstname,lastname, email,password,role)
-                        VALUES(:firstname, :lastname, :email,:password,:role)");
-        $stmt->bindParam(':firstname', $this->firstname);
-        $stmt->bindParam(':lastname', $this->lastname);
-        $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':password', $this->password);
-        $stmt->bindParam(':role', $this->role);
-        $stmt->execute();
-    }
+
 
     function workerOverview($conn)
     {

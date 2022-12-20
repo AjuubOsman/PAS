@@ -28,7 +28,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
         <div class="mb-3 mt-3">
             <label>Email:</label>
-            <input type="text" class="form-control" placeholder="Email" value="<?= $row['email'] ?>" name="email">
+            <input type="email" class="form-control" placeholder="Email" value="<?= $row['email'] ?>" name="email">
         </div>
 
         <div class="mb-3 mt-3">
