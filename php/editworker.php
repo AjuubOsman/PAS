@@ -6,10 +6,9 @@ require_once('../classes/worker.class.php');
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
-$password = $_POST['password'];
 $userid = $_POST['userid'];
 
 
 $updateWorker = new worker();
-$updateWorker->updateWorker($conn, $firstname, $lastname, $email, $password, $userid);
+$updateWorker->updateWorker($conn, $firstname, $lastname, $email, $userid);
 ?>
