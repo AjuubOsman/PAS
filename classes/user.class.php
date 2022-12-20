@@ -25,32 +25,36 @@ class user
         $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, 'user');
 
-        $sql = "SELECT email FROM carrier WHERE email = :email";
-        $query1 = $conn->prepare($sql);
-        $query1->bindParam(':email', $email);
-        $query1->execute();
-        $query1->setFetchMode(PDO::FETCH_CLASS, 'user');
 
 
-        if ($query->rowCount() == 0 AND $query1->rowCount() == 0) {
+
+        if ($query->rowCount() == 0) {
 
 
-            $stmt = $conn->prepare("INSERT INTO user (firstname,middlename,lastname,dob,postalcode,city,housenumber,phonenumber,email,password,role)
-                        VALUES(:firstname,:middlename,:lastname,:dob,:postalcode,:city,:housenumber,:phonenumber,:email,:password,:role)");
-            $stmt->bindParam(':firstname', $firstname);
-            $stmt->bindParam(':middlename', $middlename);
-            $stmt->bindParam(':lastname', $lastname);
-            $stmt->bindParam(':dob', $dob);
-            $stmt->bindParam(':postalcode', $postalcode);
-            $stmt->bindParam(':city', $city);
-            $stmt->bindParam(':housenumber', $housenumber);
-            $stmt->bindParam(':phonenumber', $phonenumber);
+            $stmt = $conn->prepare("INSERT INTO user (email,password,role)
+                        VALUES(:email,:password,:role)");
+
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':role', $role);
             $stmt->execute();
             $_SESSION['role'] = 'customer';
             $_SESSION['userid'] = $conn->lastInsertId();
+
+
+            $stmt1 = $conn->prepare("INSERT INTO customer (userid,firstname,middlename,lastname,dob,postalcode,city,housenumber,phonenumber)
+                        VALUES(:userid,:firstname,:middlename,:lastname,:dob,:postalcode,:city,:housenumber,:phonenumber)");
+            $stmt1->bindParam(':userid',  $_SESSION['userid']);
+            $stmt1->bindParam(':firstname', $firstname);
+            $stmt1->bindParam(':middlename', $middlename);
+            $stmt1->bindParam(':lastname', $lastname);
+            $stmt1->bindParam(':dob', $dob);
+            $stmt1->bindParam(':postalcode', $postalcode);
+            $stmt1->bindParam(':city', $city);
+            $stmt1->bindParam(':housenumber', $housenumber);
+            $stmt1->bindParam(':phonenumber', $phonenumber);
+            $stmt1->execute();
+
             header('location: ../index.php?page=homepage ');
         }
         else{
@@ -70,27 +74,31 @@ class user
         $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, 'user');
 
-        $sql = "SELECT email FROM user WHERE email = :email";
-        $query1 = $conn->prepare($sql);
-        $query1->bindParam(':email', $email);
-        $query1->execute();
-        $query1->setFetchMode(PDO::FETCH_CLASS, 'user');
-
-        if ($query->rowCount() == 0 AND $query1->rowCount() == 0) {
 
 
-            $stmt = $conn->prepare("INSERT INTO carrier (name,company,capacity,email,password,role,status)
-                        VALUES(:name,:company,:capacity,:email,:password,:role,:status)");
-            $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':company', $company);
-            $stmt->bindParam(':capacity', $capacity);
+        if ($query->rowCount() == 0 ) {
+
+
+            $stmt = $conn->prepare("INSERT INTO user (email,password)
+                        VALUES(:email,:password)");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':role', $role);
-            $stmt->bindParam(':status', $status);
             $stmt->execute();
             $_SESSION['role'] = 'carrier';
-            $_SESSION['carrierid'] = $conn->lastInsertId();
+            $_SESSION['userid'] = $conn->lastInsertId();
+
+
+            $stmt1 = $conn->prepare("INSERT INTO carrier (userid,name,company,capacity,status)
+                        VALUES(:userid,:name,:company,:capacity,:status)");
+            $stmt1->bindParam(':userid', $_SESSION['userid']);
+            $stmt1->bindParam(':name', $name);
+            $stmt1->bindParam(':company', $company);
+            $stmt1->bindParam(':capacity', $capacity);
+            $stmt->bindParam(':status', $status);
+            $stmt1->execute();
+
+
             header('location: ../index.php?page=packageoverview ');
 
 

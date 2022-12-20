@@ -24,21 +24,15 @@ class loginaccount
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
 
-        $sql = "SELECT carrierid, role FROM carrier WHERE email = :email AND password = :password";
-        $query1 = $conn->prepare($sql);
-        $query1->bindParam(':email', $email);
-        $query1->bindParam(':password', $password);
-        $query1->execute();
-        $result1 = $query1->fetch(PDO::FETCH_ASSOC);
 
-        if ($query->rowCount() == 1 || $query1->rowCount() == 1) {
+        if ($query->rowCount() == 1) {
             if ($result['role'] == 'customer') {
                 $_SESSION['role'] = 'customer';
                 $_SESSION['userid'] = $result['userid'];
                 header('location: ../index.php?page=homepage ');
-            } elseif ($result1['role'] == 'carrier') {
+            } elseif ($result['role'] == 'carrier') {
                 $_SESSION['role'] = 'carrier';
-                $_SESSION['carrierid'] = $result1['carrierid'];
+                $_SESSION['userid'] = $result['userid'];
                 header('location: ../index.php?page=packageoverview ');
             } elseif ($result['role'] == 'worker') {
                 $_SESSION['role'] = 'worker';

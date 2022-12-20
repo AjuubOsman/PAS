@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_SESSION['notification'])) {
     echo '<p style = "color:red;">' . $_SESSION['notification'] . '</p>';
     unset($_SESSION['notification']);
@@ -6,9 +7,7 @@ if (isset($_SESSION['notification'])) {
 $role = $_GET['role'];
 
 if ($role == 'customer'){
-
-
-        ?>
+?>
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
             <div class="card" style="border-radius: 15px;">
@@ -18,17 +17,17 @@ if ($role == 'customer'){
 
                         <div class="form-outline mb-4">
                             <label class="form-label">First name</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="First name" name="firstname" />
+                            <input type="text" class="form-control form-control-lg" placeholder="First name" name="firstname"  />
 
                         </div>
 
                         <div class="form-outline mb-4">
-                            <label class="form-label">Middle name</label>
+                            <label class="form-label">Last name</label>
                             <input type="text" class="form-control form-control-lg" placeholder="Middle name" name="middlename" />
 
                         </div>
                         <div class="form-outline mb-4">
-                            <label class="form-label">Last name</label>
+                            <label class="form-label">First name</label>
                             <input type="text" class="form-control form-control-lg" placeholder="Last name" name="lastname" />
 
                         </div>
@@ -118,7 +117,7 @@ if ($role == 'customer'){
 
                         <div class="form-outline mb-4">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="name@example.com" />
+                            <input type="email" class="form-control" name="email" placeholder="name@example.com"  />
 
                         </div>
                         <div class="form-outline mb-4">
@@ -147,4 +146,4 @@ if ($role == 'customer'){
             </div>
         </div>
     </div>
-<?php } ?>
+<?php  }?>

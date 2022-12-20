@@ -41,6 +41,14 @@ if ($password == $passwordrepeat) {
         $registercarrier->registercarrier($conn, $name, $company, $capacity, $email, $password, $role, $status);
     }
 }else{
+    $post = $_POST;
+
+    $data = array("post" => $post);
+
+$_SESSION['data'] = $data;
+
+        echo "<pre>", print_r($_SESSION['data']), "</pre>";
+
 
     $_SESSION['notification'] = 'De wachtwoorden komen niet overeen.';
     header('location: ../index.php?page=register&role='. $roles);

@@ -1,11 +1,11 @@
 <?php
 include '../private/conn.php';
-$carrierid = $_SESSION['carrierid'];
+$userid = $_SESSION['userid'];
 
 
-$sql = "SELECT status,cd FROM carrier WHERE carrierid = :carrierid ";
+$sql = "SELECT status,cd FROM carrier WHERE userid = :userid ";
 $query = $conn->prepare($sql);
-$query->bindParam(':carrierid', $carrierid);
+$query->bindParam(':userid', $userid);
 $query->execute();
 
 $row = $query->fetch(PDO::FETCH_ASSOC);
@@ -76,8 +76,8 @@ elseif ($row['status'] == 'disapprove'){
                 <div class="card bg-white shadow-lg">
                     <div class="card-body p-5">
                         <form action="php/login.php" method="post">
-                            <h2 class="fw-bold mb-2 text-uppercase ">package pick-up service</h2>
-                            <p class=" mb-5">You have been denied access, on <?= $row['cd'] ?> can you register again.</p>
+                            <h2 class="fw-bold mb-2 text-uppercase ">Pakket Ophaal service</h2>
+                            <p class=" mb-5">Je toegang is afgewezen, Probeer op <?= $row['cd'] ?>  om jezelf op te geven.</p>
                         </form>
                     </div>
                 </div>

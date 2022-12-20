@@ -1,18 +1,18 @@
 <?php
 include '../private/conn.php';
-if (isset($_SESSION['carrierid'])) {
-    $carrierid = $_SESSION['carrierid'];
 
-    $sql = "SELECT status  FROM carrier where carrierid = :carrierid ";
+    $userid = $_SESSION['userid'];
+
+    $sql = "SELECT *  FROM carrier where userid = :userid ";
     $query = $conn->prepare($sql);
-    $query->bindParam(':carrierid', $carrierid);
+    $query->bindParam(':userid', $userid);
     $query->execute();
 
 
     $row = $query->fetch(PDO::FETCH_ASSOC);
 
 
-}
+
 ?>
 
 
