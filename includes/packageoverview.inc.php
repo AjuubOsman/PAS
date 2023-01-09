@@ -31,7 +31,7 @@ if ($row['status'] == 'pending')
 <?php }
 elseif ($row['status'] == 'approve'){
 
-//comment
+
     $sql = "SELECT * FROM package WHERE userid = :userid ";
     $query = $conn->prepare($sql);
     $query->bindParam(':userid', $userid);
