@@ -22,7 +22,7 @@
                             <div class="mb-3">
                                 <label for="password" class="form-label ">Wachtwoord</label>
                                 <input type="password" class="form-control" name="psw" placeholder="*******">
-                           www </div>
+                            </div>
 
                             <div class="d-grid">
                                 <button class="btn btn-outline-dark" type="submit">Login</button>
