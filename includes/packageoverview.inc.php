@@ -29,7 +29,19 @@ if ($row['status'] == 'pending')
     </div>
 </div>
 <?php }
-elseif ($row['status'] == 'approve'){?>
+elseif ($row['status'] == 'approve'){
+
+
+    $sql = "SELECT * FROM package WHERE userid = :userid ";
+    $query = $conn->prepare($sql);
+    $query->bindParam(':userid', $userid);
+    $query->execute();
+
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+
+
+
+    ?>
 
 
     <table class="table">

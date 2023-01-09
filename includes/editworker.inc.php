@@ -2,15 +2,13 @@
 include '../private/conn.php';
 $userid = $_GET['userid'];
 
-$sql = "SELECT firstname, lastname, email, password FROM user
-        WHERE userid = :userid";
+$sql = "SELECT w.firstname,w.lastname,w.userid,u.email
+            FROM worker w
+            LEFT JOIN user u on w.userid = u.userid
+            where w.userid = u.userid";
 $stmt = $conn->prepare($sql);
-$stmt->bindParam(':userid', $userid);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-
 ?>
 <body>
 <div class="container mt-3">
@@ -31,11 +29,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             <input type="email" class="form-control" placeholder="Email" value="<?= $row['email'] ?>" name="email">
         </div>
 
-        <div class="mb-3 mt-3">
-            <label>Wachtwoord:</label>
-            <input type="password" class="form-control" placeholder="Wachtwoord" value="<?= $row['password'] ?>"
-                   name="password">
-        </div>
         <input type="hidden" name="userid" value="<?= $userid ?>">
         <button name="submit" type="submit" class="btn btn-success">Opslaan</button>
     </form>

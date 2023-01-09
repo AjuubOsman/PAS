@@ -3,19 +3,6 @@
 class user
 {
     public
-        $firstname,
-        $middlename,
-        $lastname,
-        $dob,
-        $postalcode,
-        $city,
-        $housenumber,
-        $phonenumber,
-        $email,
-        $password;
-
-
-
 
     function registercustomer($conn,$firstname,$middlename,$lastname,$dob,$postalcode,$city,$housenumber,$phonenumber,$email,$password,$role)
     {

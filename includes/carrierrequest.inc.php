@@ -1,7 +1,7 @@
 <?php
 include '../private/conn.php';
 
-$sql = "SELECT *  FROM carrier where status = 'Pending' ";
+$sql = "SELECT *  FROM carrier where status = 'pending' ";
 $query = $conn->prepare($sql);
 $query->execute();
 
