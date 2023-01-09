@@ -42,11 +42,13 @@ $stmt->execute();
 
             <td><input type="submit" class="btn btn-primary" name="action" value="approve"/></td>
                <td> <input type="submit" class="btn btn-danger" name="action" value="disapprove"/></td>
-            <input type="hidden" name="carrierid" value="<?= $row['carrierid'] ?>">
+            <input type="hidden" name="userid" value="<?= $row['userid'] ?>">
             <td></td>
             <?php } ?>
         </form>
+
     </tr>
+
     </tbody>
 
 </table>

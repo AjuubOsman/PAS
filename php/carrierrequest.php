@@ -1,7 +1,7 @@
 x<?php
 include '../../private/conn.php';
 
-$carrierid = $_POST['carrierid'];
+$userid = $_POST['userid'];
 
 $status = $_POST['action'];
 
@@ -11,18 +11,18 @@ $dateapproved = null;
 
 if ($status == 'disapprove') {
 
-    $stmt = $conn->prepare("UPDATE carrier SET status = :status , cd = :cd  where carrierid = :carrierid");
+    $stmt = $conn->prepare("UPDATE carrier SET status = :status , cd = :cd  where userid = :userid");
     $stmt->bindParam(':status', $status);
     $stmt->bindParam(':cd', $date);
-    $stmt->bindParam(':carrierid', $carrierid);
+    $stmt->bindParam(':userid', $userid);
     $stmt->execute();
 
 }else{
 
-    $stmt = $conn->prepare("UPDATE carrier SET status = :status , cd = :cd  where carrierid = :carrierid");
+    $stmt = $conn->prepare("UPDATE carrier SET status = :status , cd = :cd  where userid = :userid");
     $stmt->bindParam(':status', $status);
     $stmt->bindParam(':cd', $dateapproved);
-    $stmt->bindParam(':carrierid', $carrierid);
+    $stmt->bindParam(':userid', $userid);
     $stmt->execute();
 }
 

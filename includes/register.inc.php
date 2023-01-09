@@ -6,6 +6,8 @@ if (isset($_SESSION['notification'])) {
 }
 $role = $_GET['role'];
 
+
+
 if ($role == 'customer'){
 ?>
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -17,59 +19,59 @@ if ($role == 'customer'){
 
                         <div class="form-outline mb-4">
                             <label class="form-label">First name</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="First name" name="firstname"  />
+                            <input type="text" class="form-control form-control-lg" placeholder="First name" name="firstname" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['firstname']; } ?>" />
 
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label">Last name</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="Middle name" name="middlename" />
+                            <input type="text" class="form-control form-control-lg" placeholder="Middle name" name="middlename" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['middlename']; } ?>" />
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">First name</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="Last name" name="lastname" />
+                            <input type="text" class="form-control form-control-lg" placeholder="Last name" name="lastname" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['lastname']; } ?>" />
 
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label">Date of birth</label>
-                            <input type="date" class="form-control form-control-lg" name="dob" />
+                            <input type="date" class="form-control form-control-lg" name="dob" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['dob']; } ?>" />
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Postal code</label>
-                            <input type="text" class="form-control form-control-lg" name="postalcode" placeholder="Postal code" />
+                            <input type="text" class="form-control form-control-lg" name="postalcode" placeholder="Postal code" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['postalcode']; } ?>" />
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">City</label>
-                            <input type="text" class="form-control form-control-lg" name="city" placeholder="City" />
+                            <input type="text" class="form-control form-control-lg" name="city" placeholder="City" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['city']; } ?>"/>
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Housenumber</label>
-                            <input type="text" class="form-control form-control-lg" name="housenumber" placeholder="Housenumber" />
+                            <input type="text" class="form-control form-control-lg" name="housenumber" placeholder="Housenumber"  value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['housenumber']; } ?>"/>
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Phonenumber</label>
-                            <input type="text" class="form-control form-control-lg" name="phonenumber" placeholder="Phonenumber" />
+                            <input type="text" class="form-control form-control-lg" name="phonenumber" placeholder="Phonenumber" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['phonenumber']; } ?>" />
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Email</label>
-                            <input type="text" class="form-control form-control-lg" name="email" placeholder="name@example.com"/>
+                            <input type="text" class="form-control form-control-lg" name="email" placeholder="name@example.com" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['email']; } ?>"/>
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control form-control-lg" name="psw" placeholder="*******" />
+                            <input type="password" class="form-control form-control-lg" name="psw" placeholder="*******"  />
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Repeat password</label>
-                            <input type="password" class="form-control form-control-lg" name="pswrepeat" placeholder="*******" />
+                            <input type="password" class="form-control form-control-lg" name="pswrepeat" placeholder="*******"  />
 
                         </div>
 
@@ -100,29 +102,29 @@ if ($role == 'customer'){
 
                         <div class="form-outline mb-4">
                             <label class="form-label">Full name</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="Full name" name="name" />
+                            <input type="text" class="form-control form-control-lg" placeholder="Full name" name="name" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['name']; } ?>" />
 
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label">Company</label>
-                            <input type="text" class="form-control" name="company"  placeholder="Company name" />
+                            <input type="text" class="form-control" name="company"  placeholder="Company name" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['company']; } ?>" />
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Load capacity</label>
-                            <input type="number" class="form-control" name="capacity" placeholder="Load Capacity" />
+                            <input type="number" class="form-control" name="capacity" placeholder="Load Capacity" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['capacity']; } ?>" />
 
                         </div>
 
                         <div class="form-outline mb-4">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="name@example.com"  />
+                            <input type="email" class="form-control" name="email" placeholder="name@example.com" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['email']; } ?> "/>
 
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" name="psw" placeholder="*******" />
+                            <input type="password" class="form-control" name="psw" placeholder="*******"  />
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Repeat password</label>

@@ -32,7 +32,7 @@ class user
 
 
             $stmt = $conn->prepare("INSERT INTO user (email,password,role)
-                        VALUES(:email,:password,:role)");
+                        VALUES(:email,:password,:role   )");
 
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
@@ -79,8 +79,8 @@ class user
         if ($query->rowCount() == 0 ) {
 
 
-            $stmt = $conn->prepare("INSERT INTO user (email,password)
-                        VALUES(:email,:password)");
+            $stmt = $conn->prepare("INSERT INTO user (email,password,role)
+                        VALUES(:email,:password,:role)");
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':role', $role);
@@ -95,7 +95,7 @@ class user
             $stmt1->bindParam(':name', $name);
             $stmt1->bindParam(':company', $company);
             $stmt1->bindParam(':capacity', $capacity);
-            $stmt->bindParam(':status', $status);
+            $stmt1->bindParam(':status', $status);
             $stmt1->execute();
 
 
