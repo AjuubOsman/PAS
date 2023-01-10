@@ -15,19 +15,19 @@ $userid = $_SESSION['userid'];
         <div class="mb-3 mt-3">
             <label>Lengte:</label>
 
-            <input type="text" name="lengte" placeholder="Lengte"  min="0" required>
+            <input type="number" name="lengte" placeholder="Lengte"  min="0" required>
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Breedte:</label>
-            <input type="text" name="breedte" placeholder="Breedte" min="0" required>
+            <input type="number" name="breedte" placeholder="Breedte" min="0" required>
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Hoogte:</label>
-            <input type="text" name="hoogte" placeholder="Hoogte" min="0" required>
+            <input type="number" name="hoogte" placeholder="Hoogte" min="0" required>
             cm
         </div>
 
