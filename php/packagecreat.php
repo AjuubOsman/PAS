@@ -3,7 +3,8 @@ include '../../private/conn.php';
 
 echo "<pre>", print_r($_POST), "</pre>";
 $weight = $_POST['weight'];
-
+if ($weight <= 10) {
+$price = 5.85;
 
 $senderadres = $_POST['senderadres'];
 $weight = $_POST['weight'];
@@ -12,10 +13,8 @@ $contactinformation = $_POST['contactinformation'];
 $lengte = $_POST['lengte'];
 $breedte = $_POST['breedte'];
 $hoogte = $_POST['hoogte'];
-//$insuranced = $_POST['insuranced'];
-//$rushdelivery = $_POST['rushdelivery'];
 $userid = $_POST['userid'];
-$insured = isset($_POST['insured']) ? 1 : 0;
+$insuranced = isset($_POST['insured']) ? 1 : 0;
 $rushdelivery = isset($_POST['rushdelivery']) ? 1 : 0;
 $measurements = $lengte * $breedte * $hoogte;
 
@@ -31,9 +30,9 @@ $measurements = $lengte * $breedte * $hoogte;
     $stmt->bindParam(':contactinformation', $contactinformation);
     $stmt->bindParam(':userid', $userid);
     $stmt->bindParam(':rushdelivery', $rushdelivery);
-    $stmt->bindParam(':insuranced', $insured);
+    $stmt->bindParam(':insuranced', $insuranced);
     $stmt->execute();
 
     $packageid = $conn->lastInsertId();
 
-
+}
