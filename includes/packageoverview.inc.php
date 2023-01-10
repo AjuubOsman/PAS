@@ -32,12 +32,10 @@ if ($row['status'] == 'pending')
 elseif ($row['status'] == 'approve'){
 
 
-    $sql = "SELECT * FROM package WHERE userid = :userid ";
-    $query = $conn->prepare($sql);
-    $query->bindParam(':userid', $userid);
-    $query->execute();
-
-    $row = $query->fetch(PDO::FETCH_ASSOC);
+    $sql = "SELECT * FROM package";
+    $query2 = $conn->prepare($sql);
+    $query2->execute();
+    $row2 = $query2->fetch(PDO::FETCH_ASSOC);
 
 
 
@@ -49,7 +47,7 @@ elseif ($row['status'] == 'approve'){
         <tr>
 
             <th scope="col">Sender</th>
-            <th scope="col">Size</th>
+            <th scope="col">Measurements</th>
             <th scope="col">Weight</th>
             <th scope="col">Receiver</th>
             <th scope="col">Status</th>
@@ -60,9 +58,12 @@ elseif ($row['status'] == 'approve'){
 
                 <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= $row2['sender']?></td>
+                    <td><?= $row2['measurements']?></td>
+                    <td><?= $row2['weight']?></td>
+                    <td><?= $row2['receiver']?></td>
+                    <td><?= $row2['statusid']?></td>
+
 
 
                     <td></td>
