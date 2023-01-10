@@ -48,14 +48,14 @@ $userid = $_SESSION['userid'];
 
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="insuranced" value="true" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" name="packageregister" value="insuranced" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Pakket Verzekeren? (Pakket Verzekeren is 10% extra boven op de gewoonlijke kosten)
             </label>
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="rushdelivery" value="true" id="flexCheckDefault" >
+            <input class="form-check-input" type="checkbox" name="packageregister" value="rushdelivery" id="flexCheckDefault" >
             <label class="form-check-label" for="flexCheckDefault">
                 Pakket Met Spoed Leveren? (Spoed Levering is 20% extra boven op de gewoonlijke kosten)
             </label>
