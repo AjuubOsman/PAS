@@ -33,7 +33,7 @@ $userid = $_SESSION['userid'];
 
         <div class="mb-3 mt-3">
             <label>Gewicht:</label>
-            <input type="text" class="form-control" placeholder="Gewicht" name="weight">
+            <input type="number" class="form-control" placeholder="Gewicht" name="weight">
         </div>
 
         <div class="mb-3 mt-3">
@@ -48,14 +48,14 @@ $userid = $_SESSION['userid'];
 
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="packageregister" value="insuranced" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" name="insured" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Pakket Verzekeren? (Pakket Verzekeren is 10% extra boven op de gewoonlijke kosten)
             </label>
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="packageregister" value="rushdelivery" id="flexCheckDefault" >
+            <input class="form-check-input" type="checkbox" name="rushdelivery" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Pakket Met Spoed Leveren? (Spoed Levering is 20% extra boven op de gewoonlijke kosten)
             </label>
