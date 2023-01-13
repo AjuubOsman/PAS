@@ -8,8 +8,8 @@ require_once('../classes/user.class.php');
 //$hashed_password = hash('sha512', $password);
 
 
-$password = hash('sha512',$_POST['psw']);
-$passwordrepeat = hash('sha512',$_POST['pswrepeat']);
+$password = password_hash('sha512',$_POST['psw']);
+$passwordrepeat = password_hash('sha512',$_POST['pswrepeat']);
 
 
 $roles = $_POST['role'];

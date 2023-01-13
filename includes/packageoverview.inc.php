@@ -29,47 +29,62 @@ if ($row['status'] == 'pending')
     </div>
 </div>
 <?php }
-elseif ($row['status'] == 'approve'){
-
-
-    $sql = "SELECT * FROM package";
-    $query2 = $conn->prepare($sql);
-    $query2->execute();
-    $row2 = $query2->fetch(PDO::FETCH_ASSOC);
-
-
-
-    ?>
+elseif ($row['status'] == 'approve'){?>
 
 
     <table class="table">
         <thead>
         <tr>
 
-            <th scope="col">Sender</th>
+            <th scope="col">Sender adres</th>
             <th scope="col">Measurements</th>
             <th scope="col">Weight</th>
-            <th scope="col">Receiver</th>
+            <th scope="col">Receiver adres</th>
+            <th scope="col">Contact information</th>
+            <th scope="col">Insuranced</th>
+            <th scope="col">Rush delivery</th>
+            <th scope="col">Price</th>
             <th scope="col">Status</th>
+            <th scope="col">Claim Pakket</th>
+
 
 
         </tr>
         </thead>
 
                 <tbody>
+                <?php
+                $sql = "SELECT p.packageid, p.senderadres,p.measurements,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,s.status
+FROM package p
+LEFT JOIN status s on p.statusid = s.statusid
+
+
+where p.claimedby is NULL";
+                $query2 = $conn->prepare($sql);
+                $query2->execute();
+
+
+
+                while(  $row2 = $query2->fetch(PDO::FETCH_ASSOC)){?>
                 <tr>
-                    <td><?= $row2['sender']?></td>
-                    <td><?= $row2['measurements']?></td>
-                    <td><?= $row2['weight']?></td>
-                    <td><?= $row2['receiver']?></td>
-                    <td><?= $row2['statusid']?></td>
+                    <td><?= $row2['senderadres']?></td>
+                    <td><?= $row2['measurements']?>cm³</td>
+                    <td><?= $row2['weight']?> kg</td>
+                    <td><?= $row2['receiveradres']?></td>
+                    <td><?= $row2['contactinformation']?></td>
+                    <td><?= $row2['insuranced']?></td>
+                    <td><?= $row2['rushdelivery']?></td>
+                    <td>€<?= $row2['price']?></td>
+                    <td>€<?= $row2['status']?></td>
 
-
-
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <button class="btn btn-primary "
+                                onclick="window.location.href='php/claimpackage.php?packageid=<?= $row2["packageid"] ?> '">
+                            Claim
+                        </button></td>
 
                 </tr>
+                <?php } ?>
                 </tbody>
 
     </table>
@@ -98,10 +113,9 @@ elseif ($row['status'] == 'disapprove'){
         </div>
     </div>
 </div>
-<?php  }
+<?php  }?>
 
 
 
 
 
-?>

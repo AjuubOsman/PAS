@@ -47,6 +47,9 @@ if (isset($_SESSION['role'])){
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="index.php?page=carrieroverview">Koerier overzicht</a>
                     </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.php?page=packageoverviewadmin">Pakket Overzicht</a>
+        </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
                     </li>
