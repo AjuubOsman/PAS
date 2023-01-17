@@ -4,7 +4,8 @@ include '../../private/conn.php';
 require_once('../classes/login.class.php');
 
 $email = $_POST['email'];
-$password = hash('sha512',$_POST['psw']);
+$password = $_POST['psw'];
+
 
 
     $login = new loginaccount();
