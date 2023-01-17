@@ -4,16 +4,12 @@ include '../../private/conn.php';
 require_once('../classes/user.class.php');
 
 
-
-//$hashed_password = hash('sha512', $password);
-
-
-$password = password_hash('sha512',$_POST['psw']);
-$passwordrepeat = password_hash('sha512',$_POST['pswrepeat']);
+$password = $_POST['psw'];
+$passwordrpt = $_POST['pswrepeat'];
 
 
 $roles = $_POST['role'];
-if ($password == $passwordrepeat) {
+if ($password == $passwordrpt) {
 
     if ($roles == 'customer') {
         $email = $_POST['email'];
@@ -40,14 +36,14 @@ if ($password == $passwordrepeat) {
         $registercarrier = new user();
         $registercarrier->registercarrier($conn, $name, $company, $capacity, $email, $password, $role, $status);
     }
-}else{
+} else {
     $post = $_POST;
 
     $data = array("post" => $post);
 
-$_SESSION['data'] = $data;
+    $_SESSION['data'] = $data;
 
-        echo "<pre>", print_r($_SESSION['data']), "</pre>";
+    echo "<pre>", print_r($_SESSION['data']), "</pre>";
 
 
     $_SESSION['notification'] = 'De wachtwoorden komen niet overeen.';
