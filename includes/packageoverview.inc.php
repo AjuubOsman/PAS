@@ -72,8 +72,26 @@ where p.claimedby is NULL";
                     <td><?= $row2['weight']?> kg</td>
                     <td><?= $row2['receiveradres']?></td>
                     <td><?= $row2['contactinformation']?></td>
-                    <td><?= $row2['insuranced']?></td>
-                    <td><?= $row2['rushdelivery']?></td>
+                    <td> <?php if ($row2['insuranced'] == 1 ){
+                            echo 'Is Verzekerd';
+                        } else {
+                            {
+                                echo 'Is niet verzekerd';
+                            }
+                        }
+
+
+                        ?></td>
+                    <td><?php if ($row2['rushdelivery'] == 1 ){
+                            echo 'Is een spoed levering';
+                        } else {
+                            {
+                                echo 'Is geen spoed levering';
+                            }
+                        }
+
+
+                        ?></td>
                     <td>€<?= $row2['price']?></td>
                     <td>€<?= $row2['status']?></td>
 

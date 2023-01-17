@@ -2,6 +2,10 @@
 
 $userid = $_SESSION['userid'];
 
+if (isset($_SESSION['notification'])) {
+    echo '<p style = "color:red;">' . $_SESSION['notification'] . '</p>';
+    unset($_SESSION['notification']);
+}
 ?>
 <body>
 <div class="container mt-3">
@@ -15,19 +19,19 @@ $userid = $_SESSION['userid'];
         <div class="mb-3 mt-3">
             <label>Lengte:</label>
 
-            <input type="number" name="lengte" placeholder="Lengte"  min="0" required>
+            <input type="number" name="length" placeholder="length"  min="0" required step="any">
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Breedte:</label>
-            <input type="number" name="breedte" placeholder="Breedte" min="0" required>
+            <input type="number" name="width" placeholder="width" min="0" required step="any">
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Hoogte:</label>
-            <input type="number" name="hoogte" placeholder="Hoogte" min="0" required>
+            <input type="number" name="height" placeholder="height" min="0" required step="any">
             cm
         </div>
 

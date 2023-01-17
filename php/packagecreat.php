@@ -3,38 +3,68 @@ include '../../private/conn.php';
 session_start();
 
 $weight = $_POST['weight'];
-if ($weight <= 10) {
-    $_SESSION['price'] = 5.85;
-}else{
-    $_SESSION['price'] = 11.44;
-}
+
 $senderadres = $_POST['senderadres'];
 $weight = $_POST['weight'];
 $receiveradres = $_POST['receiveradres'];
 $contactinformation = $_POST['contactinformation'];
-$lengte = $_POST['lengte'];
-$breedte = $_POST['breedte'];
-$hoogte = $_POST['hoogte'];
+$length = $_POST['length'];
+$width = $_POST['width'];
+$height = $_POST['height'];
 $userid = $_POST['userid'];
 $insuranced = isset($_POST['insured']) ? 1 : 0;
 $rushdelivery = isset($_POST['rushdelivery']) ? 1 : 0;
-$measurements = $lengte * $breedte * $hoogte;
-$price = $_SESSION['price'];
 
 
-    $stmt = $conn->prepare("INSERT INTO package (senderadres,weight,receiveradres,measurements,price,contactinformation,userid, rushdelivery, insuranced)
-                        VALUES(:senderadres,:weight,:receiveradres,:measurements,:price,:contactinformation,:userid, :rushdelivery, :insuranced)");
-    $stmt->bindParam(':senderadres', $senderadres);
-    $stmt->bindParam(':weight', $weight);
-    $stmt->bindParam(':receiveradres', $receiveradres);
-    $stmt->bindParam(':measurements', $measurements);
-    $stmt->bindParam(':contactinformation', $contactinformation);
-    $stmt->bindParam(':userid', $userid);
-    $stmt->bindParam(':rushdelivery', $rushdelivery);
-    $stmt->bindParam(':insuranced', $insuranced);
-    $stmt->bindParam(':price', $price);
-    $stmt->execute();
 
-    $packageid = $conn->lastInsertId();
+if ($length >= 38 OR $width >=  26.5 OR $height >=  3.2 OR $weight >=  10) {
 
-header('location: ../index.php?page=mypackages');
+    $price = '11.44';
+    echo '<pre>'; print_r($_POST); echo '</pre>';
+    echo $price;
+
+//    $stmt = $conn->prepare("INSERT INTO package (senderadres,weight,receiveradres,length,width,height,price,contactinformation,userid, rushdelivery, insuranced)
+//                        VALUES(:senderadres,:weight,:receiveradres,:height,:width,:height,:price,:contactinformation,:userid, :rushdelivery, :insuranced)");
+//    $stmt->bindParam(':senderadres', $senderadres);
+//    $stmt->bindParam(':weight', $weight);
+//    $stmt->bindParam(':receiveradres', $receiveradres);
+//    $stmt->bindParam(':length', $length);
+//    $stmt->bindParam(':width', $width);
+//    $stmt->bindParam(':height', $height);
+//    $stmt->bindParam(':contactinformation', $contactinformation);
+//    $stmt->bindParam(':userid', $userid);
+//    $stmt->bindParam(':rushdelivery', $rushdelivery);
+//    $stmt->bindParam(':insuranced', $insuranced);
+//    $stmt->bindParam(':price', $price);
+//    $stmt->execute();
+
+    //header('location: ../index.php?page=mypackages');
+    }elseif ($length <= 38 OR $width <=  26.5 OR $height <=  3.2 OR $weight <= 10){
+
+
+    $price = '5.85';
+    echo '<pre>'; print_r($_POST); echo '</pre>';
+echo $price;
+//    $stmt = $conn->prepare("INSERT INTO package (senderadres,weight,receiveradres,length,width,height,price,contactinformation,userid, rushdelivery, insuranced)
+//                        VALUES(:senderadres,:weight,:receiveradres,:height,:width,:height,:price,:contactinformation,:userid, :rushdelivery, :insuranced)");
+//    $stmt->bindParam(':senderadres', $senderadres);
+//    $stmt->bindParam(':weight', $weight);
+//    $stmt->bindParam(':receiveradres', $receiveradres);
+//    $stmt->bindParam(':length', $length);
+//    $stmt->bindParam(':width', $width);
+//    $stmt->bindParam(':height', $height);
+//    $stmt->bindParam(':contactinformation', $contactinformation);
+//    $stmt->bindParam(':userid', $userid);
+//    $stmt->bindParam(':rushdelivery', $rushdelivery);
+//    $stmt->bindParam(':insuranced', $insuranced);
+//    $stmt->bindParam(':price', $price);
+//    $stmt->execute();
+
+}
+elseif ($length >  176  || $width >  78.5 || $height >  58 || $weight >  30  ){
+
+    echo 'Het pakket is te lang/ te breed/ te hoog .';
+    $_SESSION['notification'] = 'Het pakket is te lang/ te breed/ te hoog .';
+    //header('location: ../index.php?page=registerpackage');
+
+}
