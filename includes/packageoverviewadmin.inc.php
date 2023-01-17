@@ -1,25 +1,25 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">Sender adres</th>
-        <th scope="col">Measurements</th>
-        <th scope="col">Length</th>
-        <th scope="col">Width</th>
-        <th scope="col">Height</th>
-        <th scope="col">Weight</th>
-        <th scope="col">Receiver adres</th>
-        <th scope="col">Contact information</th>
-        <th scope="col">Insuranced</th>
-        <th scope="col">Rush delivery</th>
-        <th scope="col">Price</th>
+        <th scope="col">Zender adress</th>
+        <th scope="col">Afmetingen</th>
+        <th scope="col">Lengte</th>
+        <th scope="col">Breedte</th>
+        <th scope="col">Hoogte</th>
+        <th scope="col">Gewicht</th>
+        <th scope="col">Ontvanger adress</th>
+        <th scope="col">Contact informatie</th>
+        <th scope="col">Verzerkerd</th>
+        <th scope="col">Spoed Bezorging</th>
+        <th scope="col">Prijs</th>
         <th scope="col">Status</th>
-        <th scope="col">Claimed by</th>
+        <th scope="col">Claimed Door</th>
     </tr>
     </thead>
 
     <tbody>
     <?php
-    $sql = "SELECT p.packageid, p.senderadres,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,p.length,p.width,p.height,c.name,s.status
+    $sql = "SELECT p.packageid, p.senderadres,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,p.length,p.width,p.height,s.status,c.name
 FROM package p
 LEFT JOIN status s on p.statusid = s.statusid
 LEFT JOIN carrier c on c.carrierid = c.carrierid
