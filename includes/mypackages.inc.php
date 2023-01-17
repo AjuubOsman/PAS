@@ -31,11 +31,6 @@ $stmt->execute();
                 <td><?= $row['receiveradres'] ?></td>
                 <td><?= $row['price'] ?></td>
                 <td><?= $row['status'] ?></td>
-
-
-
-
-
             </tr>
             </tbody>
         <?php

@@ -52,7 +52,7 @@ if (isset($_SESSION['notification'])) {
 
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="insuranced" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" name="insured" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Pakket Verzekeren? (Pakket Verzekeren is 10% extra boven op de gewoonlijke kosten)
             </label>

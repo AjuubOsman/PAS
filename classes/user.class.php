@@ -60,6 +60,7 @@ class user
         $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, 'user');
 
+        $hashedpassword1 = password_hash($password, PASSWORD_DEFAULT);
 
         if ($query->rowCount() == 0) {
 
@@ -67,7 +68,7 @@ class user
             $stmt = $conn->prepare("INSERT INTO user (email,password,role)
                         VALUES(:email,:password,:role)");
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':password', $hashedpassword1);
             $stmt->bindParam(':role', $role);
             $stmt->execute();
             $_SESSION['role'] = 'carrier';
