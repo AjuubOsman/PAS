@@ -16,8 +16,14 @@ $insuranced = isset($_POST['insured']) ? 1 : 0;
 $rushdelivery = isset($_POST['rushdelivery']) ? 1 : 0;
 
 
+if ($length >=  177  || $width >=  79 || $height >=  59 || $weight >=  31 ){
 
-if ($length >= 38 OR $width >=  26.5 OR $height >=  3.2 OR $weight >=  10) {
+    echo 'Het pakket is te lang/ te breed/ te hoog .';
+    $_SESSION['notification'] = 'Het pakket is te lang/ te breed/ te hoog .';
+    //header('location: ../index.php?page=registerpackage');
+
+}
+elseif ($length > 38 && $length <176 || $width >  26.5 && $width <78.5 || $height >  3.2 && $height <58 || $weight >  10 && $weight <=30) {
 
     $price = '11.44';
     echo '<pre>'; print_r($_POST); echo '</pre>';
@@ -39,7 +45,7 @@ if ($length >= 38 OR $width >=  26.5 OR $height >=  3.2 OR $weight >=  10) {
 //    $stmt->execute();
 
     //header('location: ../index.php?page=mypackages');
-    }elseif ($length <= 38 OR $width <=  26.5 OR $height <=  3.2 OR $weight <= 10){
+    }elseif ($length <= 38 && $width <=  26.5 && $height <=  3.2 && $weight <= 10){
 
 
     $price = '5.85';
@@ -60,11 +66,5 @@ echo $price;
 //    $stmt->bindParam(':price', $price);
 //    $stmt->execute();
 
-}
-elseif ($length >  176  || $width >  78.5 || $height >  58 || $weight >  30  ){
-
-    echo 'Het pakket is te lang/ te breed/ te hoog .';
-    $_SESSION['notification'] = 'Het pakket is te lang/ te breed/ te hoog .';
-    //header('location: ../index.php?page=registerpackage');
 
 }
