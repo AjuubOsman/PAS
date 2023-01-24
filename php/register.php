@@ -27,7 +27,6 @@ if ($password == $passwordrpt) {
         $register->registercustomer($conn, $firstname, $middlename, $lastname, $dob, $postalcode, $city, $housenumber, $phonenumber, $email, $password, $role);
     } else {
         $email = $_POST['email'];
-
         $name = $_POST['name'];
         $capacity = $_POST['capacity'];
         $company = $_POST['company'];

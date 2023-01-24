@@ -1,4 +1,3 @@
-<!--TestYilmaz-->
 <?php
 session_start();
 

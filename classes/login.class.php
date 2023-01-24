@@ -1,5 +1,4 @@
 <?php
-
 class loginaccount
 {
     public
@@ -17,7 +16,6 @@ class loginaccount
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 
         if ($query->rowCount() == 1) {
             if (password_verify($password, $row['password'])) {
@@ -38,18 +36,14 @@ class loginaccount
                     $_SESSION['role'] = 'admin';
                     $_SESSION['userid'] = $result['userid'];
                     header('location: ../index.php?page=workeroverview ');
-
                 }
             } else {
                 $_SESSION['notification'] = 'Email of wachtwoord incorrect, probeer het nogmaals.';
                 header('location: ../index.php?page=login ');
             }
         } else {
-
             $_SESSION['notification'] = 'Email of wachtwoord incorrect, probeer het nogmaals.';
             header('location: ../index.php?page=login ');
         }
     }
-}
-
-?>
+}?>

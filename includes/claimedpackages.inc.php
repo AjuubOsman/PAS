@@ -88,7 +88,7 @@ $stmt->execute();
         <td><?= $row['status']?></td>
         <td>
             <button class="btn btn-primary"
-                    onclick=" window.location.href='index.php?page=editstatus&statusid=<?= $row1['statusid']?>'">
+                    onclick=" window.location.href='index.php?page=editstatus&statusid=<?= $row1['statusid']?>&packageid=<?=$row['packageid']?>'">
                 Wijzig
             </button>
         </td>
