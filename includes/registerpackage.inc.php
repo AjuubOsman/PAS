@@ -13,41 +13,41 @@ if (isset($_SESSION['notification'])) {
     <form action="php/packagecreat.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
             <label>Adres Verzender:</label>
-            <input type="text" class="form-control" placeholder="Adres Verzender" name="senderadres">
+            <input type="text" class="form-control" placeholder="Adres Verzender" name="senderadres" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['senderadres']; } ?>" required>
         </div>
 
         <div class="mb-3 mt-3">
             <label>Lengte:</label>
 
-            <input type="number" name="length" placeholder="length"  min="0" required step="any">
+            <input type="number" name="length" placeholder="length"  min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['length']; } ?>">
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Breedte:</label>
-            <input type="number" name="width" placeholder="width" min="0" required step="any">
+            <input type="number" name="width" placeholder="width" min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['width']; } ?>">
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Hoogte:</label>
-            <input type="number" name="height" placeholder="height" min="0" required step="any">
+            <input type="number" name="height" placeholder="height" min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['height']; } ?>">
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Gewicht:</label>
-            <input type="number" class="form-control" placeholder="Gewicht" name="weight">
+            <input type="number" class="form-control" placeholder="Gewicht" name="weight" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['weight']; } ?>">
         </div>
 
         <div class="mb-3 mt-3">
             <label>Adres Ontvangen:</label>
-            <input type="text" class="form-control" placeholder="Adres Ontvangen" name="receiveradres">
+            <input type="text" class="form-control" placeholder="Adres Ontvangen" name="receiveradres" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['receiveradres']; } ?>">
         </div>
 
         <div class="mb-3 mt-3">
             <label>Telefoonnummer of Email</label>
-            <input type="text" class="form-control" placeholder="Contact gegevens" name="contactinformation">
+            <input type="text" class="form-control" placeholder="Contact gegevens" name="contactinformation" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['contactinformation']; } ?>">
         </div>
 
 

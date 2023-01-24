@@ -1,11 +1,6 @@
 <?php
 $userid = $_SESSION['userid'];
 
-$sql = "SELECT packageid FROM package";
-$stmttest = $conn->prepare($sql);
-$stmttest->execute();
-
-$rowtest = $stmttest->fetch(PDO::FETCH_ASSOC);
 
 $sql = "SELECT p.packageid, p.senderadres,p.length,p.width,p.height,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,s.status
 FROM package p
@@ -38,6 +33,7 @@ $stmt->execute();
         <th scope="col">Spoed Bezorging</th>
         <th scope="col">Prijs</th>
         <th scope="col">Status</th>
+        <th scope="col">Status Wijzigen</th>
 
 
 
@@ -47,8 +43,16 @@ $stmt->execute();
     </thead>
 
     <tbody>
-    <?php  while( $row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    <?php  if ($stmt->rowCount() > 0) {
+        while( $row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
+
+            $sql = "SELECT statusid FROM status where status = :status";
+            $stmt1 = $conn->prepare($sql);
+            $stmt1->bindParam(':status', $row['status']);
+
+            $stmt1->execute();
+            $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
     $measurments = $row['length'] * $row['width'] * $row['height']
 ?>
     <tr>
@@ -82,10 +86,14 @@ $stmt->execute();
             ?></td>
         <td>€<?= $row['price']?></td>
         <td><?= $row['status']?></td>
-
-
+        <td>
+            <button class="btn btn-primary"
+                    onclick=" window.location.href='index.php?page=editstatus&statusid=<?= $row1['statusid']?>'">
+                Wijzig
+            </button>
+        </td>
     </tr>
-    <?php } ?>
+    <?php }} ?>
     </tbody>
 
 </table>
