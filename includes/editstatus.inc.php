@@ -21,7 +21,6 @@ $stmt1->execute();
 while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
     array_push($statusids,$row1['statusid']);
 }
-var_dump($statusids);
 
 ?>
 <form action="php/editstatus.php" method="POST" enctype="multipart/form-data">
@@ -49,7 +48,7 @@ var_dump($statusids);
 </table>
 <tr>
     <?php
-    $sql = "SELECT * FROM status";
+    $sql = "SELECT * FROM status where statusid > 2";
     $stmt2 = $conn->prepare($sql);
     $stmt2->execute();
 
@@ -58,15 +57,15 @@ var_dump($statusids);
 
     <label>
 
-        <input type="radio" name="statusid" value="<?= $row["statusid"] ?>" <?php if(in_array($row2["statusid"], $statusids)){ ?> checked="checked" <?php } ?>> <?=$row2["status"]?>
+        <input type="radio" name="statusid" value="<?=$row2["statusid"]?>" <?php if(in_array($row2["statusid"], $statusids)){ ?> checked="checked" <?php } ?>> <?=$row2["status"]?>
         <span class="checkmark"></span>
 
     </label>
-
-<?php }?>
 </tr>
-    <input type="hidden" name="statusid" value="<?=$statusid?>">
+<?php }?>
+
+
     <input type="hidden" name="packageid" value="<?=$packageid?>">
-<button name="submit" type="submit" class="btn btn-success">Voeg toe</button>
+<button name="submit" type="submit" class="btn btn-success">Pas Aan</button>
 
 </form>

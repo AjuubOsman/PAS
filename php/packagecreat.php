@@ -36,7 +36,26 @@ if ($insuranced){
 if ($rushdelivery) {
     $price = $price * 1.2;
 }
+if (isset($_POST['submit'])){
 
+    if ( empty($_POST)){
+
+    $post = $_POST;
+
+    $data = array("post" => $post);
+
+    $_SESSION['data'] = $data;
+
+    echo "<pre>", print_r($_SESSION['data']), "</pre>";
+
+    header('location: ../index.php?page=registerpackage');
+    }else{
+
+        $_SESSION['notification'] = 'Vul alles in .';
+        header('location: ../index.php?page=registerpackage');
+    }
+
+}
     $stmt = $conn->prepare("INSERT INTO package (senderadres,weight,receiveradres,length,width,height,price,contactinformation,userid, rushdelivery, insuranced)
                         VALUES(:senderadres,:weight,:receiveradres,:height,:width,:height,:price,:contactinformation,:userid, :rushdelivery, :insuranced)");
     $stmt->bindParam(':senderadres', $senderadres);

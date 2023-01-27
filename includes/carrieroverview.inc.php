@@ -12,16 +12,21 @@ $query->execute();
         <th scope="col">Ladings capaciteit</th>
     </tr>
     </thead>
-
+  <tbody>
 <?php while ($row = $query->fetch(PDO::FETCH_ASSOC)) { ?>
 
-    <tbody>
+
     <tr>
         <td><?= $row['name'] ?></td>
         <td><?= $row['company'] ?></td>
         <td><?= $row['capacity'] ?></td>
+        <td>
+    <button class="btn btn-primary"
+            onclick="window.location.href='index.php?page=carrierinfo&userid=<?= $row['userid'] ?>'">Koerier informatie
+    </button>
+        </td>
     </tr>
-    </tbody>
-    </table>
 
 <?php } ?>
+  </tbody>
+    </table>

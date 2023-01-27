@@ -67,9 +67,12 @@ where p.claimedby is NULL";
 
 
 
-                while(  $row2 = $query2->fetch(PDO::FETCH_ASSOC)){?>
+                while(  $row2 = $query2->fetch(PDO::FETCH_ASSOC)){
+
+                    $measurments = $row2['length'] * $row2['width'] * $row2['height']?>
                 <tr>
                     <td><?= $row2['senderadres']?></td>
+                   <td><?= $measurments?> cm³</td>
                     <td><?= $row2['length']?> cm</td>
                     <td><?= $row2['width']?> cm</td>
                     <td><?= $row2['height']?> cm</td>
