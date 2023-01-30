@@ -100,7 +100,7 @@ where p.claimedby is NULL";
 
                         ?></td>
                     <td>€<?= $row2['price']?></td>
-                    <td>€<?= $row2['status']?></td>
+                    <td><?= $row2['status']?></td>
 
                     <td>
                         <button class="btn btn-primary "

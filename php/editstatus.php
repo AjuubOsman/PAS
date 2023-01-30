@@ -4,10 +4,24 @@ include '../../private/conn.php';
 
 $packageid = $_POST['packageid'];
 $statusid = $_POST['statusid'];
+$userid = $_SESSION['userid'];
+
+
+if ($statusid = 6) {
+    $stmt = $conn->prepare("UPDATE package SET statusid = :statusid WHERE packageid = :packageid ");
+    $stmt->bindParam(':statusid', $statusid);
+    $stmt->bindParam(':packageid', $packageid);
+    $stmt->execute();
+
+    $stmt = $conn->prepare("UPDATE carrier SET capacity = capacity + 1 WHERE userid = :userid ");
+    $stmt->bindParam(':userid', $userid);
+    $stmt->execute();
+}
 
 $stmt = $conn->prepare("UPDATE package SET statusid = :statusid WHERE packageid = :packageid ");
 $stmt->bindParam(':statusid', $statusid);
 $stmt->bindParam(':packageid', $packageid);
 $stmt->execute();
-var_dump($_POST);
+
+
 header('location: ../index.php?page=claimedpackages');
