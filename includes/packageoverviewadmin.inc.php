@@ -19,26 +19,15 @@
 
     <tbody>
     <?php
-    $sql = "SELECT p.packageid, p.senderadres,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,p.length,p.width,p.height,s.status,c.name
+    $sql = "SELECT p.packageid, p.senderadres,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,p.length,p.width,p.height,s.status,u.email
 FROM package p
 LEFT JOIN status s on p.statusid = s.statusid
-LEFT JOIN carrier c on c.carrierid = c.carrierid
-
-";
-
-
-
+LEFT JOIN user u on p.claimedby = u.userid";
 
     $query3 = $conn->prepare($sql);
     $query3->execute();
-
-
     while ($row3 = $query3->fetch(PDO::FETCH_ASSOC)) {
-
-        $measurments = $row3['length'] * $row3['width'] * $row3['height']
-
-
-        ?>
+        $measurments = $row3['length'] * $row3['width'] * $row3['height'] ?>
         <tr>
             <td><?= $row3['senderadres'] ?></td>
             <td><?= $measurments ?>cm³</td>
@@ -52,11 +41,7 @@ LEFT JOIN carrier c on c.carrierid = c.carrierid
             <td><?= $row3['rushdelivery'] ?></td>
             <td>€<?= $row3['price'] ?></td>
             <td><?= $row3['status'] ?></td>
-            <td><?= $row3['name'] ?></td>
-
-
-            <td>
-
+            <td><?= $row3['email'] ?></td>
 
         </tr>
     <?php } ?>
