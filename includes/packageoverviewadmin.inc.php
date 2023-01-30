@@ -1,13 +1,13 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">Zender adress</th>
+        <th scope="col">Zender adres</th>
         <th scope="col">Afmetingen</th>
         <th scope="col">Lengte</th>
         <th scope="col">Breedte</th>
         <th scope="col">Hoogte</th>
         <th scope="col">Gewicht</th>
-        <th scope="col">Ontvanger adress</th>
+        <th scope="col">Ontvanger adres</th>
         <th scope="col">Contact informatie</th>
         <th scope="col">Verzerkerd</th>
         <th scope="col">Spoed Bezorging</th>

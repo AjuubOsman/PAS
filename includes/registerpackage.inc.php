@@ -19,35 +19,35 @@ if (isset($_SESSION['notification'])) {
         <div class="mb-3 mt-3">
             <label>Lengte:</label>
 
-            <input type="number" name="length" placeholder="length"  min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['length']; } ?>">
+            <input type="number" name="length" placeholder="length"  min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['length']; } ?>" required>
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Breedte:</label>
-            <input type="number" name="width" placeholder="width" min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['width']; } ?>">
+            <input type="number" name="width" placeholder="width" min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['width']; } ?>" required>
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Hoogte:</label>
-            <input type="number" name="height" placeholder="height" min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['height']; } ?>">
+            <input type="number" name="height" placeholder="height" min="0" required step="any" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['height']; } ?>" required>
             cm
         </div>
 
         <div class="mb-3 mt-3">
             <label>Gewicht:</label>
-            <input type="number" class="form-control" placeholder="Gewicht" name="weight" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['weight']; } ?>">
+            <input type="number" class="form-control" placeholder="Gewicht" name="weight" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['weight']; } ?>" required>
         </div>
 
         <div class="mb-3 mt-3">
             <label>Adres Ontvangen:</label>
-            <input type="text" class="form-control" placeholder="Adres Ontvangen" name="receiveradres" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['receiveradres']; } ?>">
+            <input type="text" class="form-control" placeholder="Adres Ontvangen" name="receiveradres" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['receiveradres']; } ?>" required>
         </div>
 
         <div class="mb-3 mt-3">
             <label>Telefoonnummer of Email</label>
-            <input type="text" class="form-control" placeholder="Contact gegevens" name="contactinformation" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['contactinformation']; } ?>">
+            <input type="text" class="form-control" placeholder="Contact gegevens" name="contactinformation" value="<?php if (isset($_SESSION['data']) and !empty($_SESSION['data'])) { echo $_SESSION['data']['post']['contactinformation']; } ?>" required>
         </div>
 
 
