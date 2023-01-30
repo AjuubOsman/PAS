@@ -10,4 +10,4 @@ $stmt->bindParam(':statusid', $statusid);
 $stmt->bindParam(':packageid', $packageid);
 $stmt->execute();
 var_dump($_POST);
-//header('location: ../index.php?page=claimedpackages');
+header('location: ../index.php?page=claimedpackages');

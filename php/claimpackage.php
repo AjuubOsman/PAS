@@ -16,4 +16,4 @@ $stmt2 = $conn->prepare("UPDATE package  SET statusid = 2 WHERE packageid = :pac
 $stmt2->bindParam(':packageid', $packageid);
 $stmt2->execute();
 
-header('location: ../index.php?page=claimedpackages');
+header('location: ../index.php?page=packageoverview');

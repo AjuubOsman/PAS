@@ -73,12 +73,11 @@ if (isset($_SESSION['role'])){
                             <a class="nav-link" aria-current="page" href="index.php?page=claimedpackages">Claimed Pakketten</a>
                         </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
-                            <li class="nav-item">
-                            <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="index.php?page=packageoverviewadmin">Mijn Salarissen</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="php/logout.php">Log Uit</a>
+                            <li class="nav-item">
                     <?php }elseif($row['status'] == 'pending' ||$row['status'] == 'disapprove' ){
 
                             ?>
