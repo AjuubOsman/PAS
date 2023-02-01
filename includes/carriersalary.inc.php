@@ -1,38 +1,6 @@
 <?php
 include '../private/conn.php';
 
-if ($_SESSION['role'] == 'admin') {
-    ?>
-
-    <table class="table table-striped table-hover table-bordered table-light border-secondary">
-        <thead>
-        <tr>
-            <button style="float:right" class="btn btn-success"
-                    onclick="window.location.href='index.php?page=addworker'">
-                Add Worker
-            </button>
-            <th scope="col">Naam</th>
-            <th scope="col">Achternaam</th>
-            <th scope="col">Email</th>
-            <th scope="col">Bewerken</th>
-            <th scope="col">Verwijderen</th>
-        </tr>
-        </thead>
-
-
-        <tbody>
-        <tr>
-            <td> <?= '' ?></td>
-            <td> <?= '' ?></td>
-            <td> <?= '' ?></td>
-            <td>
-
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <?php
-} elseif ($_SESSION['role'] == 'carrier') {
 
     $carrierid = $_SESSION['userid'];
 
@@ -108,16 +76,15 @@ if ($_SESSION['role'] == 'admin') {
         $stmt->execute();
         $row3 = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $sql = "SELECT po.percent FROM
-             position po
-LEFT JOIN package pa on pa.positionid = po.positionid where pa.claimedby = :userid";
-        $queryid = $conn->prepare($sql);
-        $queryid->bindParam(':userid', $carrierid);
-        $queryid->execute();
-        $rowid = $queryid->fetch(PDO::FETCH_ASSOC);
-
-        $salary = $row3['totalPrice'] / 100 * $rowid['percent'];
-        $totalSalary = round($salary, 2);
+        $sql_total = "SELECT ROUND(SUM(pa.price / 100 * po.percent), 2) AS winst
+                         FROM package pa
+                         LEFT JOIN position po ON pa.positionid = po.positionid
+                         WHERE pa.claimedby = :id";
+        $stmt_total = $conn->prepare($sql_total);
+        $stmt_total->bindParam(':id', $carrierid);
+        $stmt_total->execute();
+        $totalSalary = 0;
+        $totalSalary = $stmt_total->fetch(PDO::FETCH_ASSOC);
 
         ?>
         </tbody>
@@ -136,15 +103,15 @@ LEFT JOIN package pa on pa.positionid = po.positionid where pa.claimedby = :user
         <tr>
             <td><?= $row2['numberOfRows'] ?></td>
             <td><?= $row3['totalPrice'] ?></td>
-            <td>€<?= $totalSalary ?></td>
-            <td>
+            <td>€<?= $totalSalary['winst'] ?></td>
+
 
             </td>
         </tr>
         </tbody>
     </table>
 
-<?php } ?>
+
 
 
 
