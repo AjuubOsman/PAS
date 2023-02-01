@@ -19,11 +19,12 @@ if ($status == 'disapprove') {
 
 }else{
 
-    $stmt = $conn->prepare("UPDATE carrier SET status = :status , cd = :cd  where userid = :userid");
+    $stmt = $conn->prepare("UPDATE carrier SET status = :status , cd = :cd, positionid = 1  where userid = :userid");
     $stmt->bindParam(':status', $status);
     $stmt->bindParam(':cd', $dateapproved);
     $stmt->bindParam(':userid', $userid);
     $stmt->execute();
+
 }
 
 

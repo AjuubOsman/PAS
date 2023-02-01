@@ -2,7 +2,7 @@
 $userid = $_SESSION['userid'];
 
 
-$sql = "SELECT p.packageid, p.senderadres,p.length,p.width,p.height,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,s.status
+$sql = "SELECT p.packageid, p.senderadres,p.length,p.width,p.height,p.weight,p.receiveradres,p.contactinformation,p.insuranced,p.rushdelivery,p.price,s.status, p.statusid
 FROM package p
 LEFT JOIN status s on p.statusid = s.statusid
 
@@ -33,7 +33,7 @@ $stmt->execute();
         <th scope="col">Spoed Bezorging</th>
         <th scope="col">Prijs</th>
         <th scope="col">Status</th>
-        <th scope="col">Status Wijzigen</th>
+
 
 
 
@@ -86,12 +86,14 @@ $stmt->execute();
             ?></td>
         <td>€<?= $row['price']?></td>
         <td><?= $row['status']?></td>
+        <?php if ($row['statusid'] != 6) {?>
         <td>
             <button class="btn btn-primary"
                     onclick=" window.location.href='index.php?page=editstatus&statusid=<?= $row1['statusid']?>&packageid=<?=$row['packageid']?>'">
-                Wijzig
+                Wijzig Status
             </button>
         </td>
+        <?php } ?>
     </tr>
     <?php }} ?>
     </tbody>

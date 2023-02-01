@@ -108,7 +108,15 @@ if ($_SESSION['role'] == 'admin') {
         $stmt->execute();
         $row3 = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $salary = $row3['totalPrice'] / 100 * 80;
+        $sql = "SELECT po.percent FROM
+             position po
+LEFT JOIN package pa on pa.positionid = po.positionid where pa.claimedby = :userid";
+        $queryid = $conn->prepare($sql);
+        $queryid->bindParam(':userid', $carrierid);
+        $queryid->execute();
+        $rowid = $queryid->fetch(PDO::FETCH_ASSOC);
+
+        $salary = $row3['totalPrice'] / 100 * $rowid['percent'];
         $totalSalary = round($salary, 2);
 
         ?>

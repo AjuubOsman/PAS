@@ -61,7 +61,7 @@ FROM package p
 LEFT JOIN status s on p.statusid = s.statusid
 
 
-where p.claimedby is NULL";
+where p.claimedby is NULL AND p.statusid = 1";
                 $query2 = $conn->prepare($sql);
                 $query2->execute();
 
@@ -103,6 +103,7 @@ where p.claimedby is NULL";
                     <td><?= $row2['status']?></td>
 
                     <td>
+
                         <button class="btn btn-primary "
                                 onclick="window.location.href='php/claimpackage.php?packageid=<?= $row2["packageid"] ?> '">
                             Claim
