@@ -1,35 +1,36 @@
 <?php
 include '../private/conn.php';
 
-$statusid = $_GET['statusid'];
-$packageid = $_GET['packageid'];
+$userid = $_GET['userid'];
+$positionid = $_GET['positionid'];
 
-$sql = "SELECT p.senderadres,p.receiveradres, s.status
-        FROM package p
-LEFT JOIN status s ON p.statusid = s.statusid where p.packageid = $packageid";
+$sql = "SELECT c.name,po.position
+        FROM carrier c
+LEFT JOIN position po ON po.positionid = c.positionid where c.userid  = :userid";
 $stmt = $conn->prepare($sql);
+$stmt->bindParam(':userid', $userid);
 $stmt->execute();
 
 
 
-$statusids = array();
+$positionids = array();
 
-$sql = "SELECT statusid FROM status where statusid = :statusid";
+$sql = "SELECT positionid FROM position where positionid = :positionid";
 $stmt1 = $conn->prepare($sql);
-$stmt1->bindParam(':statusid', $statusid);
+$stmt1->bindParam(':positionid', $positionid);
 $stmt1->execute();
 while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
-    array_push($statusids,$row1['statusid']);
+    array_push($positionids,$row1['positionid']);
 }
 
 ?>
-<form action="php/editstatus.php" method="POST" enctype="multipart/form-data">
+<form action="php/editposition.php" method="POST" enctype="multipart/form-data">
     <table class="table">
         <thead>
         <tr>
 
-            <th scope="col">Afzender Adres</th>
-            <th scope="col">Ontvanger Adres</th>
+            <th scope="col">Naam Koerier</th>
+            <th scope="col">Huidige Positie</th>
 
 
 
@@ -39,8 +40,8 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
         <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
             <tbody>
             <tr>
-                <td><?= $row['senderadres'] ?></td>
-                <td><?= $row['receiveradres'] ?></td>
+                <td><?= $row['name'] ?></td>
+                <td><?= $row['position'] ?></td>
             </tr>
             </tbody>
             <?php
@@ -48,7 +49,7 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
     </table>
     <tr>
         <?php
-        $sql = "SELECT * FROM status where statusid > 2";
+        $sql = "SELECT * FROM position ";
         $stmt2 = $conn->prepare($sql);
         $stmt2->execute();
 
@@ -57,7 +58,7 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
 
         <label>
 
-            <input type="radio" name="statusid" value="<?=$row2["statusid"]?>" <?php if(in_array($row2["statusid"], $statusids)){ ?> checked="checked" <?php } ?>> <?=$row2["status"]?>
+            <input type="radio" name="positionid" value="<?=$row2["positionid"]?>" <?php if(in_array($row2["positionid"], $positionids)){ ?> checked="checked" <?php } ?>> <?=$row2["position"]?>
             <span class="checkmark"></span>
 
         </label>
@@ -65,7 +66,7 @@ while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
     <?php }?>
 
 
-    <input type="hidden" name="packageid" value="<?=$packageid?>">
+    <input type="hidden" name="userid" value="<?=$userid?>">
     <button name="submit" type="submit" class="btn btn-success">Pas Aan</button>
 
 </form>

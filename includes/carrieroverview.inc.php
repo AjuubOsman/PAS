@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT c.name,c.company,c.capacity,p.position, c.userid FROM carrier c
+$sql = "SELECT c.name,c.company,c.capacity,p.position,p.positionid, c.userid FROM carrier c
 LEFT JOIN position p on p.positionid = c.positionid                                     
 where status = 'approve' ";
 
@@ -27,7 +27,7 @@ $query->execute();
         <td><?= $row['capacity'] ?></td>
         <td>
             <button class="btn btn-primary"
-                    onclick="window.location.href='index.php?page=editposition&userid=<?= $row['userid'] ?>&'"><?= $row['position'] ?>
+                    onclick="window.location.href='index.php?page=editposition&userid=<?= $row['userid'] ?>&positionid=<?= $row['positionid'] ?>'"><?= $row['position'] ?>
             </button>
         </td>
         <td>
